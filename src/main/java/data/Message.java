@@ -2,8 +2,10 @@ package data;
 
 import java.util.Date;
 
-public interface Message {
 
-	public String getMessage();
-	public Date getDate();
+public interface Message extends Comparable<Date>{
+
+
+	String getMessage();
+	Date getDate();
 }
