@@ -3,6 +3,7 @@ package data;
 import utils.AVLTree;
 
 import java.nio.charset.Charset;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
@@ -13,17 +14,26 @@ public class Room implements Comparable<String> {
      */
     private final String nameOfRoom;
     private final String codeOfRoom;
-    private Set<User> admins;
-    private AVLTree<User> userAVLTree;
+    private final Set<User> admins;
+    private final AVLTree<User> userAVLTree;
+    private final Calendar roomCalendar;
 
     Room(String nameOfRoom, User admin) {
         this.nameOfRoom = nameOfRoom;
-        this.admins = new HashSet<User>();
-        this.userAVLTree = new AVLTree<User>();
+        this.admins = new HashSet<>();
+        this.userAVLTree = new AVLTree<>();
         this.codeOfRoom = generateRoomCode();
+        this.roomCalendar = new Calendar();
         admins.add(admin);
     }
 
+    public boolean addAsignment(Date date, Assignment assignment) {
+        return roomCalendar.addAssignmentToDate(date,assignment) != null;
+    }
+
+    public Calendar getRoomCalendar() {
+        return roomCalendar;
+    }
 
     public boolean addAdmin(User newAdmin) {
         return admins.add(newAdmin);

@@ -4,9 +4,9 @@ import java.util.Date;
 
 
 public class Notification implements Message,Comparable<Date>{
-    private String note;
+    private final String note;
 
-    private Date date;
+    private final Date date;
 
     @Override
     public String toString() {
