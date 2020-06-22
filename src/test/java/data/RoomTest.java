@@ -1,43 +1,54 @@
 package data;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class DataTest {
+class RoomTest {
 
     @Test
-    void addUser() {
+    void addAdmin() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void addRoom() {
+    void removeAdmin() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void getRoomById() {
+    void getCodeOfRoom() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void getUserById() {
+    void getNameOfRoom() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void removeUserById() {
+    void getUserAVLTree() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void removeRoomById() {
+    void getAdmins() {
+        /* would be edited */
+        assertTrue(true);
+    }
+
+    @Test
+    void generateRoomCode() {
+        /* would be edited */
+        assertTrue(true);
+    }
+
+    @Test
+    void compareTo() {
         /* would be edited */
         assertTrue(true);
     }
