@@ -8,6 +8,7 @@ class UserTest {
 
     @Test
     void addRoom() {
+        Assert.assertTrue(addRoom(new Room("testRoomName", "testUserAdmin")));
     }
 
     @Test
