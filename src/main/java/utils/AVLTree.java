@@ -42,7 +42,7 @@ public class AVLTree<E extends Comparable<E>>
         if(localRoot == null){
             addReturn = true;
             increase = true;
-            return new AVLNode<E>(item);
+            return new AVLNode<>(item);
         }
         // Compare the item to the data in the current root. If equal, do not insert item
         int compare = item.compareTo(localRoot.data);
