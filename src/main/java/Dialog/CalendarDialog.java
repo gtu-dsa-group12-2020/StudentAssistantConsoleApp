@@ -1,8 +1,11 @@
 package Dialog;
 
+import data.User;
+
 public class CalendarDialog implements Dialog {
+
 	@Override
-	public void startDialog() {
+	public void startDialog(User user) {
 
 	}
 
