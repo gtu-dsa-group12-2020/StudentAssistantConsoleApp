@@ -5,9 +5,9 @@ import java.util.Arrays;
 
 public class Helper {
     /* public static ArrayList<E> object = new ArrayList<E>(Arrays.asList(new E(parameters))); */
-    public static ArrayList<User> users = new ArrayList<>();
-    public static ArrayList<Integer> signedUsersIndexes = new ArrayList<>();
-    public static ArrayList<Room> rooms = new ArrayList<>();
+    public static ArrayList<User> users = new ArrayList<User>();
+    public static ArrayList<Integer> signedUsersIndexes = new ArrayList<Integer>();
+    public static ArrayList<Room> rooms = new ArrayList<Room>();
     
     public static void ForceUserToInitialize() {
         /* fill array lists with five objects */
