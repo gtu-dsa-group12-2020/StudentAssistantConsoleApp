@@ -1,17 +1,20 @@
 package data;
-public class Notification {
+public class Notification implements Message{
     private String note;
+    private Calendar.Date date;
 
-    public Notification(String note) {
+    public Notification(String note, Calendar.Date date) {
         this.note = note;
     }
 
-    public String getNote() {
+
+    @Override
+    public String getMessage() {
         return note;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    @Override
+    public Calendar.Date getDate() {
+        return date;
     }
-
 }
