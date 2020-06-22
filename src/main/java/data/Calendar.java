@@ -3,7 +3,7 @@ package data;
 import java.util.*;
 
 public class Calendar {
-    private Map<Date,Assignment> dates;
+    private final Map<Date,Assignment> dates;
 
     public Calendar() {
         this.dates = new HashMap<>();
