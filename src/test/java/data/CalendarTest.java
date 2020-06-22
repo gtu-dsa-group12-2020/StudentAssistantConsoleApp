@@ -4,40 +4,34 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DataTest {
+class CalendarTest {
 
     @Test
-    void addUser() {
+    void addAssignmentToDate() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void addRoom() {
+    void mergeCalendars() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void getRoomById() {
+    void removeAssignment() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void getUserById() {
+    void getDates() {
         /* would be edited */
         assertTrue(true);
     }
 
     @Test
-    void removeUserById() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void removeRoomById() {
+    void returnCalendar() {
         /* would be edited */
         assertTrue(true);
     }
