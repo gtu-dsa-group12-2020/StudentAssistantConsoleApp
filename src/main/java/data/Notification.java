@@ -6,6 +6,14 @@ public class Notification implements Message,Comparable<Date>{
     private String note;
     private Date date;
 
+    @Override
+    public String toString() {
+        return "Notification\n" +
+                "note='" + note + '\n' +
+                ", date=" + date +
+                '\n';
+    }
+
     public Notification(String note, Date date) {
         this.note = note;
     }
