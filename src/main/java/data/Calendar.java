@@ -1,36 +1,36 @@
 package data;
 
 import java.util.Date;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Calendar {
-    private List<Date> dates;
+    private Map<Date,Assignment> dates;
 
     public Calendar() {
-        dates = new ArrayList<Date>();
+        this.dates = new HashMap<>();
     }
 
-    public Date getDate(int index) {
-        if(index < 0 || index > dates.size())
-            throw new IndexOutOfBoundsException();
+    public Assignment addAssignmentToDate(Date date,Assignment assignment) {
+        return dates.putIfAbsent(date,assignment);
+    }
 
-        return dates.get(index);
+    public Assignment removeAssignment(Date date) {
+        return dates.remove(date);
+    }
+
+    public String returnCalendar() {
+        Iterator<Map.Entry<Date,Assignment>> mapIterator = this.dates.entrySet().iterator();
+        StringBuilder sb = new StringBuilder();
+        while (mapIterator.hasNext()) {
+            Map.Entry<Date,Assignment> entry = mapIterator.next();
+            sb.append(entry.getValue().toString());
+        }
+        return sb.toString();
     }
 
     public void printCalender() {
-        for(Date d : dates) {
-            System.out.println(d.toString());
-        }
+
     }
-
-
-
-
-
-
-
-
-
-
 }
