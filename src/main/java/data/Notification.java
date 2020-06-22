@@ -2,7 +2,7 @@ package data;
 
 import java.util.Date;
 
-public class Notification implements Message{
+public class Notification implements Message,Comparable<Date>{
     private String note;
     private Date date;
 
@@ -19,5 +19,12 @@ public class Notification implements Message{
     @Override
     public Date getDate() {
         return date;
+    }
+
+
+
+    @Override
+    public int compareTo(Date date) {
+        return this.date.compareTo(date);
     }
 }

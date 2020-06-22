@@ -2,7 +2,7 @@ package data;
 
 import java.util.Date;
 
-public class Assignment implements Message {
+public class Assignment implements Message, Comparable<Date> {
 	private String message;
 
 	private Date createDate;
@@ -37,4 +37,8 @@ public class Assignment implements Message {
 				'}';
 	}
 
+	@Override
+	public int compareTo(Date date) {
+		return this.assigmentDate.compareTo(date);
+	}
 }
