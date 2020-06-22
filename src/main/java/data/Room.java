@@ -2,15 +2,75 @@ package data;
 
 import utils.AVLTree;
 
+import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class Room implements Comparable<String> {
     /**
      * Name of Room
      */
-    private String nameOfRoom;
-    private User admin;
-    private User asistant;
+    private final String nameOfRoom;
+    private final String codeOfRoom;
+    private Set<User> admins;
     private AVLTree<User> userAVLTree;
 
+    Room(String nameOfRoom, User admin) {
+        this.nameOfRoom = nameOfRoom;
+        this.admins = new HashSet<User>();
+        this.userAVLTree = new AVLTree<User>();
+        this.codeOfRoom = generateRoomCode();
+        admins.add(admin);
+    }
+
+
+    public boolean addAdmin(User newAdmin) {
+        return admins.add(newAdmin);
+    }
+
+    public boolean removeAdmin(User target) {
+        return admins.remove(target);
+    }
+
+    public String getCodeOfRoom() {
+        return codeOfRoom;
+    }
+
+    public String getNameOfRoom() {
+        return nameOfRoom;
+    }
+
+    public AVLTree<User> getUserAVLTree() {
+        return userAVLTree;
+    }
+
+    public Set<User> getAdmins() {
+        return admins;
+    }
+
+    public String generateRoomCode() {
+        byte[] array = new byte[256];
+        int n = 7;
+        new Random().nextBytes(array);
+
+        String randomString = new String(array, Charset.forName("UTF-8"));
+
+        StringBuilder r = new StringBuilder();
+
+        for (int k = 0; k < randomString.length(); k++) {
+
+            char ch = randomString.charAt(k);
+
+            if (((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9')) && (n > 0)) {
+                r.append(ch);
+                n--;
+            }
+        }
+
+        // return the resultant string
+        return r.toString();
+    }
 
     /**
      * Compares this object with the specified object for order.  Returns a
@@ -51,6 +111,7 @@ public class Room implements Comparable<String> {
      * @throws ClassCastException   if the specified object's type prevents it
      *                              from being compared to this object.
      */
+    @Override
     public int compareTo(String o) {
         return nameOfRoom.compareTo(o);
     }

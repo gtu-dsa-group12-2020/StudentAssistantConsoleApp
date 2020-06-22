@@ -8,7 +8,7 @@ public class User implements Comparable<User> {
     private final PriorityQueue<Room> rooms;
 
     User(String userName, String mail) {
-        this.profile = new Profile(userName,mail);
+        this.profile = new Profile(userName, mail);
         this.rooms = new PriorityQueue<Room>();
     }
 
@@ -20,10 +20,8 @@ public class User implements Comparable<User> {
         return rooms.remove(room);
     }
 
-    public void roomList() {
-        for (Room r: rooms) {
-            System.out.println(r.toString());
-        }
+    public PriorityQueue<Room> roomList() {
+        return rooms;
     }
 
     public Profile getProfile() {
@@ -74,7 +72,7 @@ public class User implements Comparable<User> {
         return this.profile.compareTo(o.getProfile());
     }
 
-    public static class Profile implements Comparable<Profile> {
+    private static class Profile implements Comparable<Profile> {
         private final String userName;
         private final String mail;
 
