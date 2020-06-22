@@ -1,11 +1,13 @@
 package data;
 
+import java.util.Date;
+
 public class Assignment implements Message {
 	private String message;
 
-	private Calendar.Date createDate;
+	private Date createDate;
 
-	private Calendar.Date assigmentDate;
+	private Date assigmentDate;
 
 	private String link;
 	@Override
@@ -16,11 +18,12 @@ public class Assignment implements Message {
 		this.link = link;
 	}
 	@Override
-	public Calendar.Date getDate() {
+	public Date getDate() {
 		return null;
 	}
 
-	public Calendar.Date getAssigmentDate() {
+	public
+	Date getAssigmentDate() {
 		return assigmentDate;
 	}
 

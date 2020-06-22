@@ -1,7 +1,9 @@
 package data;
 
+import java.util.Date;
+
 public interface Message {
 
 	public String getMessage();
-	public Calendar.Date getDate();
+	public Date getDate();
 }

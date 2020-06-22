@@ -1,9 +1,12 @@
 package data;
+
+import java.util.Date;
+
 public class Notification implements Message{
     private String note;
-    private Calendar.Date date;
+    private Date date;
 
-    public Notification(String note, Calendar.Date date) {
+    public Notification(String note, Date date) {
         this.note = note;
     }
 
@@ -14,7 +17,7 @@ public class Notification implements Message{
     }
 
     @Override
-    public Calendar.Date getDate() {
+    public Date getDate() {
         return date;
     }
 }
