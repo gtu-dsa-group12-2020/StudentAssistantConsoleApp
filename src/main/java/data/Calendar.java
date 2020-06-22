@@ -1,84 +1,37 @@
 package data;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Calendar {
-    private List<Date> dates;
+    private final Map<Date,Assignment> dates;
 
     public Calendar() {
-        dates = new ArrayList<Date>();
+        this.dates = new HashMap<>();
     }
 
-    public Date getDate(int index) {
-        if(index < 0 || index > dates.size())
-            throw new IndexOutOfBoundsException();
-
-        return dates.get(index);
+    public Assignment addAssignmentToDate(Date date,Assignment assignment) {
+        return dates.putIfAbsent(date,assignment);
     }
 
-    public void printCalender() {
-        for(Date d : dates) {
-            System.out.println(d.toString());
-        }
+    public void mergeCalendars(Calendar roomCalendar) {
+        dates.putAll(roomCalendar.dates);
     }
 
-    public class Date<E> {
-        private int day;
-        private int month;
-        private int year;
-        private E specification;
-
-        public Date() {
-            day = 0;
-            month = 0;
-            year = 0;
-            specification = null;
-        }
-
-        public Date(String date) {
-            String[] dates = date.split(".");
-            try {
-                if (dates.length == 3) {
-                    day = Integer.parseInt(dates[0]);
-                    month = Integer.parseInt(dates[1]);
-                    year = Integer.parseInt(dates[2]);
-                    specification = null;
-                }
-                else
-                    throw new NoSuchMethodException();
-            }
-            catch(Exception e) {
-                System.out.println("Wrong uses date");
-            }
-        }
-
-
-        public int getDay() {
-            return day;
-        }
-
-        public int getMonth() {
-            return month;
-        }
-
-        public int getYear() {
-            return year;
-        }
-
-        public E getSpecification() {
-            return specification;
-        }
-
-        public void setSpecification(E specification) {
-            if(specification != null)
-                this.specification = specification;
-        }
-
-        @Override
-        public String toString() {
-            return day + "." + month + "." + year + " -> " + specification;
-        }
+    public Assignment removeAssignment(Date date) {
+        return dates.remove(date);
     }
 
+    public Map<Date, Assignment> getDates() {
+        return dates;
+    }
+
+    public String returnCalendar() {
+        Map<Date,Assignment> treeMap = new TreeMap<>(this.dates);
+        StringBuilder sb = new StringBuilder();
+
+        for (Map.Entry<Date,Assignment> entry: treeMap.entrySet()) {
+            sb.append(entry.getValue()).append("\n");
+        }
+        return sb.toString();
+    }
 }

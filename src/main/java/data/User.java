@@ -1,172 +1,113 @@
 package data;
-import java.util.LinkedList;
-import java.util.NoSuchElementException;
-import java.util.Stack;
 
-public abstract class User<E> implements Comparable<E> {
-    private Profile profile;
-    private Calendar calendar = new Calendar();
-    private Stack<Notification> notifications = new Stack<Notification>();
+import java.util.PriorityQueue;
 
+public class User implements Comparable<User> {
 
+    private final Profile profile;
+    private final PriorityQueue<Room> rooms;
 
-    public User(){
-        profile = new Profile();
+    User(String userName, String mail) {
+        this.profile = new Profile(userName, mail);
+        this.rooms = new PriorityQueue<Room>();
     }
-    public User(String name, String surname){
-        profile = new Profile(name, surname);
+
+    public boolean addRoom(Room newRoom) {
+        return rooms.add(newRoom);
     }
-    public User(String name, String surname, String mail) {
-        profile = new Profile(name, surname, mail);
+
+    public boolean removeRoom(Room room) {
+        return rooms.remove(room);
+    }
+
+    public PriorityQueue<Room> roomList() {
+        return rooms;
     }
 
     public Profile getProfile() {
         return profile;
     }
 
-    public Calendar getCalender() {
-        return calendar;
-    }
-
-    public void addNotification(String note) {
-        if(note != null)
-            return;
-
-        Notification n = new Notification(note);
-        notifications.add(n);
-    }
-
-    public Notification setNotification(int index, String note){
-        if(index < 0 || index >= notifications.size() || note == null)
-            throw new IndexOutOfBoundsException();
-
-        Notification n = new Notification(note);
-        return notifications.set(index, n);
-    }
-
-    public Notification removeNotification(int index){
-        if(index < 0 || index >= notifications.size())
-            throw new IndexOutOfBoundsException();
-
-        return notifications.remove(index);
-    }
-
-    public String getName() {
-        return profile.getName();
-    }
-
-    public String getSurname() {
-        return profile.getSurname();
-    }
-
-    public String getMail() {
-        return profile.getMail();
-    }
-
-    public void setName(String name) {
-        profile.setName(name);
-    }
-
-    public void setSurname(String surname) {
-        profile.setSurname(surname);
-    }
-
-    public void setMail(String mail) {
-        profile.setMail(mail);
-    }
-    // Showing Profile to consol
-    public void showProfile() {
-        System.out.println(this.profile.toString());
-    }
-    // Showing notifications to consol
-    public void showNotifications() {
-        System.out.println(notifications.toString());
-    }
-
-    // Showing calendar to consol
-    public void showCalendar() {
-        System.out.println(calendar.toString());
-    }
-
-    // CompareTo method , It compares profiles, If does not find then throw NoSuchElementExeption
-
+    /**
+     * Compares this object with the specified object for order.  Returns a
+     * negative integer, zero, or a positive integer as this object is less
+     * than, equal to, or greater than the specified object.
+     *
+     * <p>The implementor must ensure
+     * {@code sgn(x.compareTo(y)) == -sgn(y.compareTo(x))}
+     * for all {@code x} and {@code y}.  (This
+     * implies that {@code x.compareTo(y)} must throw an exception iff
+     * {@code y.compareTo(x)} throws an exception.)
+     *
+     * <p>The implementor must also ensure that the relation is transitive:
+     * {@code (x.compareTo(y) > 0 && y.compareTo(z) > 0)} implies
+     * {@code x.compareTo(z) > 0}.
+     *
+     * <p>Finally, the implementor must ensure that {@code x.compareTo(y)==0}
+     * implies that {@code sgn(x.compareTo(z)) == sgn(y.compareTo(z))}, for
+     * all {@code z}.
+     *
+     * <p>It is strongly recommended, but <i>not</i> strictly required that
+     * {@code (x.compareTo(y)==0) == (x.equals(y))}.  Generally speaking, any
+     * class that implements the {@code Comparable} interface and violates
+     * this condition should clearly indicate this fact.  The recommended
+     * language is "Note: this class has a natural ordering that is
+     * inconsistent with equals."
+     *
+     * <p>In the foregoing description, the notation
+     * {@code sgn(}<i>expression</i>{@code )} designates the mathematical
+     * <i>signum</i> function, which is defined to return one of {@code -1},
+     * {@code 0}, or {@code 1} according to whether the value of
+     * <i>expression</i> is negative, zero, or positive, respectively.
+     *
+     * @param o the object to be compared.
+     * @return a negative integer, zero, or a positive integer as this object
+     * is less than, equal to, or greater than the specified object.
+     * @throws NullPointerException if the specified object is null
+     * @throws ClassCastException   if the specified object's type prevents it
+     *                              from being compared to this object.
+     */
     @Override
-    public int compareTo(E other) {
-        Profile temp=(Profile) other;
-        if(temp!=null)
-            return this.profile.compareTo(temp);
-        throw new NoSuchElementException();
+    public int compareTo(User o) {
+        return this.profile.compareTo(o.getProfile());
     }
 
+    public static class Profile implements Comparable<Profile> {
+        private final String userName;
+        private final String mail;
 
 
-    public static class Profile implements Comparable<Profile>{
-        private String name;
-        private String surname;
-        private String mail;
-
-        public Profile(){
-            name = null;
-            surname = null;
-            mail = null;
-        }
-        public Profile(String name, String surname) {
-            this.name = name;
-            this.surname = surname;
-            mail = null;
-        }
-
-        public Profile(String name, String surname, String mail) {
-            this.name = name;
-            this.surname = surname;
+        public Profile(String name, String mail) {
+            this.userName = name;
             this.mail = mail;
         }
 
-        public String getName() {
-            return name;
+        public String getUserName() {
+            return userName;
         }
 
-        public String getSurname() {
-            return surname;
-        }
 
         public String getMail() {
             return mail;
         }
 
-        public void setName(String name) {
-            if(name != null)
-                this.name = name;
-        }
 
-        public void setSurname(String surname) {
-            if(surname != null)
-                this.surname = surname;
-        }
-
-        public void setMail(String mail) {
-            this.mail = mail;
-        }
         // toString method
         @Override
         public String toString() {
-            return "Name : " + name + " Surname : " + surname + "\n e-Mail : " + mail;
+            return "User Name: " + userName + "\n e-Mail : " + mail;
         }
 
         // CompareTo method compares profiles with respect to name than checks surname and mail
         @Override
         public int compareTo(Profile other) {
-            if(this.name.compareTo(other.name)==0) {
-                if(this.surname.equals(other.surname))
-                    if(this.mail.equals(other.mail))
+            if (this.userName.compareTo(other.userName) == 0) {
+                    if (this.mail.equals(other.mail))
                         return 0;
-            }
-            else if(this.name.compareTo(other.name)<0) {
+            } else if (this.userName.compareTo(other.userName) < 0) {
                 return -1;
             }
             return 1;
         }
-
     }
-
 }
