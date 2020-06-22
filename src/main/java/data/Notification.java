@@ -2,12 +2,23 @@ package data;
 
 import java.util.Date;
 
-public class Notification implements Message{
-    private final String note;
+
+public class Notification implements Message,Comparable<Date>{
+    private String note;
+
     private Date date;
+
+    @Override
+    public String toString() {
+        return "Notification\n" +
+                "note='" + note + '\n' +
+                ", date=" + date +
+                '\n';
+    }
 
     public Notification(String note, Date date) {
         this.note = note;
+        this.date = date;
     }
 
     @Override
@@ -19,6 +30,7 @@ public class Notification implements Message{
     public Date getDate() {
         return date;
     }
+
 
     /**
      * Compares this object with the specified object for order.  Returns a
@@ -62,5 +74,6 @@ public class Notification implements Message{
     @Override
     public int compareTo(Date o) {
         return this.date.compareTo(o);
+
     }
 }

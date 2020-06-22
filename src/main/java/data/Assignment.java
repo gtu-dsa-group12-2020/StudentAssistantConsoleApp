@@ -2,7 +2,7 @@ package data;
 
 import java.util.Date;
 
-public class Assignment implements Message {
+public class Assignment implements Message, Comparable<Date> {
 	private String message;
 
 	private Date createDate;
@@ -10,32 +10,34 @@ public class Assignment implements Message {
 	private Date assigmentDate;
 
 	private String link;
+
 	@Override
 	public String getMessage() {
 		return null;
 	}
-	public void setLink(String  link){
+
+	public void setLink(String link) {
 		this.link = link;
 	}
+
 	@Override
 	public Date getDate() {
 		return null;
 	}
 
-	public
-	Date getAssigmentDate() {
+	public Date getAssigmentDate() {
 		return assigmentDate;
 	}
 
 	@Override
 	public String toString() {
-		return "Assignment{" +
-				"message='" + message + '\'' +
-				", createDate=" + createDate +
-				", assignmentDate=" + assigmentDate +
-				", link='" + link + '\'' +
-				'}';
+		return "Assignment\n" +
+				"message='" + message + '\n' +
+				"link='" + link + '\n' +
+				"createDate=" + createDate + '\n' +
+				"assignmentDate=" + assigmentDate + '\n';
 	}
+
 
 	/**
 	 * Compares this object with the specified object for order.  Returns a
@@ -79,5 +81,6 @@ public class Assignment implements Message {
 	@Override
 	public int compareTo(Date o) {
 		return this.assigmentDate.compareTo(o);
+
 	}
 }
