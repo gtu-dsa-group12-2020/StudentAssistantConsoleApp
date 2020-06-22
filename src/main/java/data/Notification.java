@@ -16,6 +16,7 @@ public class Notification implements Message,Comparable<Date>{
 
     public Notification(String note, Date date) {
         this.note = note;
+        this.date = date;
     }
 
 
