@@ -1,34 +1,16 @@
 package data;
 
-import java.util.PriorityQueue;
+import utils.AVLTree;
 
-public class User implements Comparable<User> {
+public class Room implements Comparable<String> {
+    /**
+     * Name of Room
+     */
+    private String nameOfRoom;
+    private User admin;
+    private User asistant;
+    private AVLTree<User> userAVLTree;
 
-    private final Profile profile;
-    private final PriorityQueue<Room> rooms;
-
-    User(String userName, String mail) {
-        this.profile = new Profile(userName,mail);
-        this.rooms = new PriorityQueue<Room>();
-    }
-
-    public boolean addRoom(Room newRoom) {
-        return rooms.add(newRoom);
-    }
-
-    public boolean removeRoom(Room room) {
-        return rooms.remove(room);
-    }
-
-    public void roomList() {
-        for (Room r: rooms) {
-            System.out.println(r.toString());
-        }
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
 
     /**
      * Compares this object with the specified object for order.  Returns a
@@ -69,47 +51,7 @@ public class User implements Comparable<User> {
      * @throws ClassCastException   if the specified object's type prevents it
      *                              from being compared to this object.
      */
-    @Override
-    public int compareTo(User o) {
-        return this.profile.compareTo(o.getProfile());
-    }
-
-    public static class Profile implements Comparable<Profile> {
-        private final String userName;
-        private final String mail;
-
-
-        public Profile(String name, String mail) {
-            this.userName = name;
-            this.mail = mail;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-
-        public String getMail() {
-            return mail;
-        }
-
-
-        // toString method
-        @Override
-        public String toString() {
-            return "User Name: " + userName + "\n e-Mail : " + mail;
-        }
-
-        // CompareTo method compares profiles with respect to name than checks surname and mail
-        @Override
-        public int compareTo(Profile other) {
-            if (this.userName.compareTo(other.userName) == 0) {
-                    if (this.mail.equals(other.mail))
-                        return 0;
-            } else if (this.userName.compareTo(other.userName) < 0) {
-                return -1;
-            }
-            return 1;
-        }
+    public int compareTo(String o) {
+        return nameOfRoom.compareTo(o);
     }
 }
