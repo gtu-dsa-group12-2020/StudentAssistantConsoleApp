@@ -11,6 +11,10 @@ public class Assignment implements Message, Comparable<Date> {
 
 	private String link;
 
+	public void setAssigmentDate(Date assigmentDate) {
+		this.assigmentDate = assigmentDate;
+	}
+
 	@Override
 	public String getMessage() {
 		return null;
