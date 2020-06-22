@@ -1,17 +1,30 @@
 package data;
-public class Notification {
-    private String note;
 
-    public Notification(String note) {
+import java.util.Date;
+
+public class Notification implements Message,Comparable<Date>{
+    private String note;
+    private Date date;
+
+    public Notification(String note, Date date) {
         this.note = note;
     }
 
-    public String getNote() {
+
+    @Override
+    public String getMessage() {
         return note;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    @Override
+    public Date getDate() {
+        return date;
     }
 
+
+
+    @Override
+    public int compareTo(Date date) {
+        return this.date.compareTo(date);
+    }
 }
