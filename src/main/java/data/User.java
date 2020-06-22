@@ -72,7 +72,7 @@ public class User implements Comparable<User> {
         return this.profile.compareTo(o.getProfile());
     }
 
-    private static class Profile implements Comparable<Profile> {
+    public static class Profile implements Comparable<Profile> {
         private final String userName;
         private final String mail;
 
