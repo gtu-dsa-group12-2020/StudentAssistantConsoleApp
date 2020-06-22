@@ -1,31 +1,75 @@
 package data;
 
-import java.util.PriorityQueue;
+import utils.AVLTree;
 
-public class User implements Comparable<User> {
+import java.nio.charset.Charset;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 
-    private final Profile profile;
-    private final PriorityQueue<Room> rooms;
+public class Room implements Comparable<String> {
+    /**
+     * Name of Room
+     */
+    private final String nameOfRoom;
+    private final String codeOfRoom;
+    private Set<User> admins;
+    private AVLTree<User> userAVLTree;
 
-    User(String userName, String mail) {
-        this.profile = new Profile(userName, mail);
-        this.rooms = new PriorityQueue<Room>();
+    Room(String nameOfRoom, User admin) {
+        this.nameOfRoom = nameOfRoom;
+        this.admins = new HashSet<User>();
+        this.userAVLTree = new AVLTree<User>();
+        this.codeOfRoom = generateRoomCode();
+        admins.add(admin);
     }
 
-    public boolean addRoom(Room newRoom) {
-        return rooms.add(newRoom);
+
+    public boolean addAdmin(User newAdmin) {
+        return admins.add(newAdmin);
     }
 
-    public boolean removeRoom(Room room) {
-        return rooms.remove(room);
+    public boolean removeAdmin(User target) {
+        return admins.remove(target);
     }
 
-    public PriorityQueue<Room> roomList() {
-        return rooms;
+    public String getCodeOfRoom() {
+        return codeOfRoom;
     }
 
-    public Profile getProfile() {
-        return profile;
+    public String getNameOfRoom() {
+        return nameOfRoom;
+    }
+
+    public AVLTree<User> getUserAVLTree() {
+        return userAVLTree;
+    }
+
+    public Set<User> getAdmins() {
+        return admins;
+    }
+
+    public String generateRoomCode() {
+        byte[] array = new byte[256];
+        int n = 7;
+        new Random().nextBytes(array);
+
+        String randomString = new String(array, Charset.forName("UTF-8"));
+
+        StringBuilder r = new StringBuilder();
+
+        for (int k = 0; k < randomString.length(); k++) {
+
+            char ch = randomString.charAt(k);
+
+            if (((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9')) && (n > 0)) {
+                r.append(ch);
+                n--;
+            }
+        }
+
+        // return the resultant string
+        return r.toString();
     }
 
     /**
@@ -68,46 +112,7 @@ public class User implements Comparable<User> {
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(User o) {
-        return this.profile.compareTo(o.getProfile());
-    }
-
-    private static class Profile implements Comparable<Profile> {
-        private final String userName;
-        private final String mail;
-
-
-        public Profile(String name, String mail) {
-            this.userName = name;
-            this.mail = mail;
-        }
-
-        public String getUserName() {
-            return userName;
-        }
-
-
-        public String getMail() {
-            return mail;
-        }
-
-
-        // toString method
-        @Override
-        public String toString() {
-            return "User Name: " + userName + "\n e-Mail : " + mail;
-        }
-
-        // CompareTo method compares profiles with respect to name than checks surname and mail
-        @Override
-        public int compareTo(Profile other) {
-            if (this.userName.compareTo(other.userName) == 0) {
-                    if (this.mail.equals(other.mail))
-                        return 0;
-            } else if (this.userName.compareTo(other.userName) < 0) {
-                return -1;
-            }
-            return 1;
-        }
+    public int compareTo(String o) {
+        return nameOfRoom.compareTo(o);
     }
 }
