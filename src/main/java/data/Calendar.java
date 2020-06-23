@@ -6,6 +6,9 @@ import java.util.*;
  * Class for representing Calendar
  */
 public class Calendar {
+    /**
+     * crate ne dates in calender and we use map
+     */
     private final Map<Date,Assignment> dates;
 
     /**

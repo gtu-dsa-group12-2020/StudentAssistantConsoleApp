@@ -6,12 +6,24 @@ import java.util.Date;
  * Class for representing Assignment of any Room
  */
 public class Assignment implements Message, Comparable<Date> {
+	/**
+	 * this dtring keep the message
+	 */
 	private String message;
 
+	/**
+	 * this date class keeping for new create
+	 */
 	private Date createDate;
 
+	/**
+	 * this date class keeping for assigment
+	 */
 	private Date assigmentDate;
 
+	/**
+	 * keepin for link
+	 */
 	private String link;
 
 	@Override
