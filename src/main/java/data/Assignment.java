@@ -54,7 +54,7 @@ public class Assignment implements Message, Comparable<Date> {
 	 * @return The date of the assigment
 	 */
 	public Date getAssignmentDate() {
-		return assignmentDate;
+		return assigmentDate;
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class Assignment implements Message, Comparable<Date> {
 	 *
 	 * @param o Other date object
 	 */
-	public void setAssignmentDate(Date o){ this.assignmentDate =o;}
+	public void setAssignmentDate(Date o){ this.assigmentDate =o;}
 
 	@Override
 	public String toString() {
@@ -70,7 +70,7 @@ public class Assignment implements Message, Comparable<Date> {
 				"message='" + message + '\n' +
 				"link='" + link + '\n' +
 				"createDate=" + createDate + '\n' +
-				"assignmentDate=" + assignmentDate + '\n';
+				"assignmentDate=" + assigmentDate + '\n';
 	}
 
 
@@ -115,7 +115,7 @@ public class Assignment implements Message, Comparable<Date> {
 	 */
 	@Override
 	public int compareTo(Date o) {
-		return this.assignmentDate.compareTo(o);
+		return this.assigmentDate.compareTo(o);
 
 	}
 }

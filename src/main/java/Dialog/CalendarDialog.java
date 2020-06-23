@@ -18,7 +18,7 @@ public class CalendarDialog implements Dialog {
 	}
 
 	public void startDialog(User user, Data data) {
-		user.
+		System.out.println(user.getCalendar());
 
 	}
 
