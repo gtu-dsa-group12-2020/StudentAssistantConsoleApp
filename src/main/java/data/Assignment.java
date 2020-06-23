@@ -25,10 +25,10 @@ public class Assignment implements Message, Comparable<Date> {
 		return null;
 	}
 
-	public Date getAssigmentDate() {
+	public Date getAssignmentDate() {
 		return assigmentDate;
 	}
-	public void setAssigmentDate(Date o){ this.assigmentDate=o;}
+	public void setAssignmentDate(Date o){ this.assigmentDate=o;}
 	@Override
 	public String toString() {
 		return "Assignment\n" +
