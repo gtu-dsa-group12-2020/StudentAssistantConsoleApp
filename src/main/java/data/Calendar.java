@@ -3,61 +3,61 @@ package data;
 import java.util.*;
 
 /**
- * The type Calendar.
+ * Class for representing Calendar
  */
 public class Calendar {
     private final Map<Date,Assignment> dates;
 
     /**
-     * Instantiates a new Calendar.
+     * No Parameter Constructor Method, instantiates a Calendar
      */
     public Calendar() {
         this.dates = new HashMap<>();
     }
 
     /**
-     * Add assignment to date assignment.
+     * Adds an Assignment to a Date
      *
-     * @param date       the date
-     * @param assignment the assignment
-     * @return the assignment
+     * @param date       Date of the Assignment to add
+     * @param assignment Assignment on the Date to add
+     * @return The Assignment object that added
      */
     public Assignment addAssignmentToDate(Date date,Assignment assignment) {
         return dates.putIfAbsent(date,assignment);
     }
 
     /**
-     * Merge calendars.
+     * Merges calendar with calendar of any room
      *
-     * @param roomCalendar the room calendar
+     * @param roomCalendar Calendar of any Room
      */
     public void mergeCalendars(Calendar roomCalendar) {
         dates.putAll(roomCalendar.dates);
     }
 
     /**
-     * Remove assignment assignment.
+     * Removes an assignment on a date
      *
-     * @param date the date
-     * @return the assignment
+     * @param date Date of the Assignment to remove
+     * @return The Assignment object that removed
      */
     public Assignment removeAssignment(Date date) {
         return dates.remove(date);
     }
 
     /**
-     * Gets dates.
+     * Gets dates in a Calendar
      *
-     * @return the dates
+     * @return Give dates map
      */
     public Map<Date, Assignment> getDates() {
         return dates;
     }
 
     /**
-     * Return calendar string.
+     * Gives a Calendar as a String
      *
-     * @return the string
+     * @return Returns Calendar as a String (similar to toString)
      */
     public String returnCalendar() {
         Map<Date,Assignment> treeMap = new TreeMap<>(this.dates);
