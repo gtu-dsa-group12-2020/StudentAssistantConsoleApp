@@ -1,64 +1,29 @@
 package data;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoomTest {
 
     @Test
-    void addAdmin() {
-        /* would be edited */
-        assertTrue(true);
+    void testAddAsignment() {
+        User userObject = new User("testUserName","testMail");
+        Room roomObject = new Room("testNameOfRoom",userObject);
+        Date date = new Date();
+        Assignment assignment = new Assignment();
+        /* it may be edited */
+        assertFalse(roomObject.addAsignment(date,assignment));
     }
 
     @Test
-    void removeAdmin() {
-        /* would be edited */
-        assertTrue(true);
-    }
+    void testGetRoomCalendar() {
+        User userObject = new User("testUserName","testMail");
+        Room roomObject = new Room("testNameOfRoom",userObject);
 
-    @Test
-    void getCodeOfRoom() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void getNameOfRoom() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void getUserAVLTree() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void getAdmins() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void generateRoomCode() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void compareTo() {
-        /* would be edited */
-        assertTrue(true);
-    }
-
-    @Test
-    void addAsignment() {
-    }
-
-    @Test
-    void getRoomCalendar() {
+        assertNotNull(roomObject.getRoomCalendar());
     }
 
     @Test
