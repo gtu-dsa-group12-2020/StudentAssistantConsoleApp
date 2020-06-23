@@ -4,18 +4,18 @@ package utils;
  * This class represents a single item in an AVL tree.
  * @version 1.0
  */
-public class Node<T extends Comparable<T>> {
+public class AVLNode<T extends Comparable<T>> {
 	private T data;
-	private Node<T> left;
-	private Node<T> right;
+	private AVLNode<T> left;
+	private AVLNode<T> right;
 	private int height;
 	private int balanceFactor;
 
-	public Node(T d) {
+	public AVLNode(T d) {
 		data = d;
 	}
 
-	public Node(T d, Node<T> l, Node<T> r) {
+	public AVLNode(T d, AVLNode<T> l, AVLNode<T> r) {
 		data = d;
 		left = l;
 		right = r;
@@ -29,19 +29,19 @@ public class Node<T extends Comparable<T>> {
 		this.data = data;
 	}
 
-	public Node<T> getLeft() {
+	public AVLNode<T> getLeft() {
 		return left;
 	}
 
-	public void setLeft(Node<T> left) {
+	public void setLeft(AVLNode<T> left) {
 		this.left = left;
 	}
 
-	public Node<T> getRight() {
+	public AVLNode<T> getRight() {
 		return right;
 	}
 
-	public void setRight(Node<T> right) {
+	public void setRight(AVLNode<T> right) {
 		this.right = right;
 	}
 

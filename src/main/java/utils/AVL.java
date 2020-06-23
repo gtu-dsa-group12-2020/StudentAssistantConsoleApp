@@ -1,7 +1,5 @@
 package utils;
 
-import utils.AVLInterface;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
 
     // Do not add additional instance variables
-    private Node<T> root = null;
+    private AVLNode<T> root = null;
     private int size = 0;
 
     /**
@@ -30,18 +28,18 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
         if (data == null) {
             throw new IllegalArgumentException("Argument cannot be null!");
         } else if (this.size == 0) {
-            this.root = new Node<T>(data);
+            this.root = new AVLNode<T>(data);
         } else {
             // Calculate maximum parents to visit
             int worstCase = this.size / 2 + 1;
 
             // Parallel arrays tracking node ancestors
             @SuppressWarnings("unchecked")
-            Node<T>[] parents = new Node[worstCase];
+            AVLNode<T>[] parents = new AVLNode[worstCase];
             ChildType[] childTypes = new ChildType[worstCase];
 
             int parentCount = 0;
-            Node<T> current = root;
+            AVLNode<T> current = root;
 
             // Search for location to add array
             while (current != null) {
@@ -64,9 +62,9 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
             // Add node at location found
             current = parents[parentCount - 1];
             if (childTypes[parentCount - 1] == ChildType.LEFT) {
-                current.setLeft(new Node<T>(data));
+                current.setLeft(new AVLNode<T>(data));
             } else {
-                current.setRight(new Node<T>(data));
+                current.setRight(new AVLNode<T>(data));
             }
 
             // Iterate back through parents, updating fields and balancing
@@ -83,10 +81,10 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
         this.size++;
     }
 
-    private void updateFactorAndHeight(Node<T> target) {
+    private void updateFactorAndHeight(AVLNode<T> target) {
         // Get children
-        Node<T> left = target.getLeft();
-        Node<T> right = target.getRight();
+        AVLNode<T> left = target.getLeft();
+        AVLNode<T> right = target.getRight();
 
         // Calculate balance factor [height(left) - height(right)]
         int numLeft = (left == null ? -1 : left.getHeight());
@@ -99,7 +97,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
         target.setHeight(Math.max(numLeft, numRight) + 1);
     }
 
-    private void rebalance(Node<T> target, Node<T> parent, ChildType type) {
+    private void rebalance(AVLNode<T> target, AVLNode<T> parent, ChildType type) {
         int balanceFactor = target.getBalanceFactor();
 
         if (balanceFactor > 1) {
@@ -139,9 +137,9 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
      *            the child type of <code>target</code> in relation to
      *            <code>parent</code>.
      */
-    private void rotateRight(Node<T> target, Node<T> parent, ChildType type) {
+    private void rotateRight(AVLNode<T> target, AVLNode<T> parent, ChildType type) {
         // Get the node to pivot around
-        Node<T> pivot = target.getLeft();
+        AVLNode<T> pivot = target.getLeft();
 
         // Ensure nothing stupid happens
         if (pivot == null) {
@@ -178,8 +176,8 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
      *            the child type of <code>target</code> in relation to
      *            <code>parent</code>.
      */
-    private void rotateLeft(Node<T> target, Node<T> parent, ChildType type) {
-        Node<T> pivot = target.getRight();
+    private void rotateLeft(AVLNode<T> target, AVLNode<T> parent, ChildType type) {
+        AVLNode<T> pivot = target.getRight();
 
         // Ensure nothing stupid happens
         if (pivot == null) {
@@ -217,11 +215,11 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
 
         // Parallel arrays tracking node ancestors
         @SuppressWarnings("unchecked")
-        Node<T>[] parents = new Node[worstCase];
+        AVLNode<T>[] parents = new AVLNode[worstCase];
         ChildType[] childTypes = new ChildType[worstCase];
 
         int parentCount = 0;
-        Node<T> current = root;
+        AVLNode<T> current = root;
         int comp;
 
         do {
@@ -246,8 +244,8 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
         T result = current.getData();
 
         // Get children of deleted node
-        Node<T> left = current.getLeft();
-        Node<T> right = current.getRight();
+        AVLNode<T> left = current.getLeft();
+        AVLNode<T> right = current.getRight();
 
         // Handle the 3 distinct delete cases
         if (left == null && right == null) {
@@ -255,7 +253,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
 
             if (parentCount > 0) {
                 // Node to delete is a leaf
-                Node<T> parent = parents[parentCount - 1];
+                AVLNode<T> parent = parents[parentCount - 1];
                 if (childTypes[parentCount - 1] == ChildType.LEFT) {
                     parent.setLeft(null);
                 } else {
@@ -269,10 +267,10 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
             // CASE: one child
 
             // Retrieve the lone child
-            Node<T> loneChild = (left == null ? right : left);
+            AVLNode<T> loneChild = (left == null ? right : left);
 
             if (parentCount > 1) {
-                Node<T> parent = parents[parentCount - 1];
+                AVLNode<T> parent = parents[parentCount - 1];
                 if (childTypes[parentCount - 2] == ChildType.LEFT) {
                     parent.setLeft(loneChild);
                 } else {
@@ -285,8 +283,8 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
             // CASE: two children
 
             // Find successor
-            Node<T> successor = right;
-            Node<T> successorParent = current;
+            AVLNode<T> successor = right;
+            AVLNode<T> successorParent = current;
             ChildType type = ChildType.RIGHT;
             while (successor.getLeft() != null) {
                 successorParent = successor;
@@ -330,7 +328,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
         if (data == null) {
             throw new IllegalArgumentException("Argument cannot be null.");
         }
-        Node<T> current = root;
+        AVLNode<T> current = root;
         while (current != null) {
             int comp = data.compareTo(current.getData());
             if (comp == 0) {
@@ -376,7 +374,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
      * @param current
      *            the node to start preorder from.
      */
-    private void preorder(List<T> existing, Node<T> current) {
+    private void preorder(List<T> existing, AVLNode<T> current) {
         existing.add(current.getData());
         if (current.getLeft() != null) {
             this.preorder(existing, current.getLeft());
@@ -403,7 +401,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
      * @param current
      *            the node to start postorder from.
      */
-    private void postorder(List<T> existing, Node<T> current) {
+    private void postorder(List<T> existing, AVLNode<T> current) {
         if (current.getLeft() != null) {
             this.postorder(existing, current.getLeft());
         }
@@ -430,7 +428,7 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
      * @param current
      *            the node to start inorder from.
      */
-    private void inorder(List<T> existing, Node<T> current) {
+    private void inorder(List<T> existing, AVLNode<T> current) {
         if (current.getLeft() != null) {
             this.inorder(existing, current.getLeft());
         }
@@ -443,17 +441,17 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
     @Override
     public List<T> levelorder() {
         List<T> results = new ArrayList<T>(this.size);
-        LinkedList<Node<T>> nodes = new LinkedList<Node<T>>();
-        nodes.add(this.root);
-        Node<T> current;
-        while (!nodes.isEmpty()) {
-            current = nodes.remove();
+        LinkedList<AVLNode<T>> AVLNodes = new LinkedList<AVLNode<T>>();
+        AVLNodes.add(this.root);
+        AVLNode<T> current;
+        while (!AVLNodes.isEmpty()) {
+            current = AVLNodes.remove();
             results.add(current.getData());
             if (current.getLeft() != null) {
-                nodes.add(current.getLeft());
+                AVLNodes.add(current.getLeft());
             }
             if (current.getRight() != null) {
-                nodes.add(current.getRight());
+                AVLNodes.add(current.getRight());
             }
         }
         return results;
@@ -473,23 +471,23 @@ public class AVL<T extends Comparable<T>> implements AVLInterface<T> {
     @Override
     public String toString() {
         StringBuilder build = new StringBuilder(this.size * 3);
-        LinkedList<Node<T>> nodes = new LinkedList<Node<T>>();
-        nodes.add(this.root);
-        Node<T> current;
-        while (!nodes.isEmpty()) {
-            current = nodes.remove();
+        LinkedList<AVLNode<T>> AVLNodes = new LinkedList<AVLNode<T>>();
+        AVLNodes.add(this.root);
+        AVLNode<T> current;
+        while (!AVLNodes.isEmpty()) {
+            current = AVLNodes.remove();
             if (current == null) {
                 build.append("\r\n");
             } else {
                 build.append(current.getData().toString() + " ");
-                if (!nodes.contains(null)) {
-                    nodes.add(null);
+                if (!AVLNodes.contains(null)) {
+                    AVLNodes.add(null);
                 }
                 if (current.getLeft() != null) {
-                    nodes.add(current.getLeft());
+                    AVLNodes.add(current.getLeft());
                 }
                 if (current.getRight() != null) {
-                    nodes.add(current.getRight());
+                    AVLNodes.add(current.getRight());
                 }
             }
         }
