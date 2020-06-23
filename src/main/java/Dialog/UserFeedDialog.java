@@ -9,7 +9,9 @@ import java.util.Scanner;
 public class
 UserFeedDialog {
 
-	public UserFeedDialog(User user, Data data){
+
+
+	public void startDialog(User user, Data data) {
 
 		Scanner scanner = new Scanner(System.in);
 		LoginDialog loginDialog = new LoginDialog();
@@ -18,10 +20,10 @@ UserFeedDialog {
 
 			System.out.println("1- show rooms");
 			System.out.println("2- show notifications");
-			System.out.println("2- show assignments");
-			System.out.println("3- calculate average");
-			System.out.println("4- create room");
-			System.out.println("5 - join room");
+			System.out.println("3- show assignments");
+			System.out.println("4- calculate average");
+			System.out.println("5- create room");
+			System.out.println("6 - join room");
 			System.out.println("0- Exit");
 			choice = scanner.nextInt();
 			switch (choice) {
@@ -30,11 +32,15 @@ UserFeedDialog {
 
 					break;
 				case 2:
-					System.out.println(user.);
-					;
+					System.out.println(user.getRoomString());
 
 					break;
-				case 3: new Av
+				case 3:
+					new CalendarDialog().startDialog(user,data);
+
+				case 4:
+					new AverageDialog().startDialog();
+					break;
 				case 0:
 					System.out.println("Going Back!");
 					break;
@@ -45,10 +51,12 @@ UserFeedDialog {
 
 		}
 
+	}
 
 
-
-
+	private boolean createRoom(User user, Data data) {
+		System.out.println("please enter the room");
+		return false;
 	}
 
 }
