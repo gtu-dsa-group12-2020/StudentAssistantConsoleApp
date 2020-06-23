@@ -4,31 +4,42 @@ import data.Data;
 import data.User;
 
 import java.util.Scanner;
-import java.util.concurrent.ConcurrentSkipListMap;
+
 
 public class
 UserFeedDialog {
 
-	public UserFeedDialog(User user, Data data){
+
+
+	public void startDialog(User user, Data data) {
 
 		Scanner scanner = new Scanner(System.in);
 		LoginDialog loginDialog = new LoginDialog();
 		int choice = -1;
 		while (choice != 0) {
 
-			System.out.println("1- show my rooms");
-			System.out.println("2- show my notification");
-			System.out.println("2- show assignment");
-			System.out.println("2- show notification");
+			System.out.println("1- show rooms");
+			System.out.println("2- show notifications");
+			System.out.println("3- show assignments");
+			System.out.println("4- calculate average");
+			System.out.println("5- create room");
+			System.out.println("6 - join room");
 			System.out.println("0- Exit");
 			choice = scanner.nextInt();
 			switch (choice) {
 				case 1:
-					new LoginDialog().startDialog(data);
+					System.out.println(user.roomList());
+
 					break;
 				case 2:
-					new SignUpDialog().startDialog(data);
+					System.out.println(user.getRoomString());
 
+					break;
+				case 3:
+					new CalendarDialog().startDialog(user,data);
+
+				case 4:
+					new AverageDialog().startDialog();
 					break;
 				case 0:
 					System.out.println("Going Back!");
@@ -40,10 +51,12 @@ UserFeedDialog {
 
 		}
 
+	}
 
 
-
-
+	private boolean createRoom(User user, Data data) {
+		System.out.println("please enter the room");
+		return false;
 	}
 
 }
