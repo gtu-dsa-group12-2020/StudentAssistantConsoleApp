@@ -17,7 +17,7 @@ class RoomTest {
     @Test
     void testAddAsignment() {
         /* it may be edited */
-        assertFalse(roomObject.addAsignment(date,assignment));
+        assertFalse(roomObject.addAssignment(date,assignment));
     }
 
     @Test
