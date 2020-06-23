@@ -1,55 +1,68 @@
 package data;
 
 import org.junit.jupiter.api.Test;
+
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RoomTest {
 
+    User userObject = new User("testUserName","testMail");
+    User userObject2 = new User("testUserName2","testMail2");
+    Room roomObject = new Room("testNameOfRoom",userObject);
+    Date date = new Date();
+    Assignment assignment = new Assignment();
+
     @Test
-    void addAdmin() {
-        /* would be edited */
-        assertTrue(true);
+    void testAddAssignment() {
+        /* it may be edited */
+        assertFalse(roomObject.addAssignment(date,assignment));
     }
 
     @Test
-    void removeAdmin() {
-        /* would be edited */
-        assertTrue(true);
+    void testGetRoomCalendar() {
+        assertNotNull(roomObject.getRoomCalendar());
     }
 
     @Test
-    void getCodeOfRoom() {
-        /* would be edited */
-        assertTrue(true);
+    void testAddAdmin() {
+        assertTrue(roomObject.addAdmin(userObject2));
     }
 
     @Test
-    void getNameOfRoom() {
-        /* would be edited */
-        assertTrue(true);
+    void testRemoveAdmin() {
+        assertTrue(roomObject.removeAdmin(userObject));
     }
 
     @Test
-    void getUserAVLTree() {
-        /* would be edited */
-        assertTrue(true);
+    void testGetCodeOfRoom() {
+        assertNotNull(roomObject.getCodeOfRoom());
     }
 
     @Test
-    void getAdmins() {
-        /* would be edited */
-        assertTrue(true);
+    void testGetNameOfRoom() {
+        assertNotNull(roomObject.getNameOfRoom());
     }
 
     @Test
-    void generateRoomCode() {
-        /* would be edited */
-        assertTrue(true);
+    void testGetUserAVLTree() {
+        /* if add user avl tree method, here may be edited */
+        assertNotNull(roomObject.getUserAVLTree());
     }
 
     @Test
-    void compareTo() {
-        /* would be edited */
-        assertTrue(true);
+    void testGetAdmins() {
+        assertNotNull(roomObject.getAdmins());
+    }
+
+    @Test
+    void testGenerateRoomCode() {
+        assertNotNull(roomObject.generateRoomCode());
+    }
+
+    @Test
+    void testCompareTo() {
+        assertEquals(roomObject.compareTo("testNameOfRoom"),0);
     }
 }

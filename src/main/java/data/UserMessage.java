@@ -2,44 +2,30 @@ package data;
 
 import java.util.Date;
 
+public class UserMessage implements Message, Comparable<Date>{
+    /**
+     * User whom sends message
+     */
+    private final User user;
+    /**
+     * Message
+     */
+    private final String message;
+    /**
+     * Date of the message
+     */
+    private final Date dateOfMessage;
 
-/**
- * Class for representing Notification of any Room
- */
-public class Notification implements Message,Comparable<Date>{
-    private final String note;
-
-    private final Date date;
+    public UserMessage(User user, String message, Date dateOfMessage) {
+        this.user = user;
+        this.message = message;
+        this.dateOfMessage = dateOfMessage;
+    }
 
     @Override
     public String toString() {
-        return "Notification\n" +
-                "note='" + note + '\n' +
-                ", date=" + date +
-                '\n';
+        return "User: " + user.getProfile().getUserName() + "\n" + message + "\n" + "\t\tDate: " + dateOfMessage.toString();
     }
-
-    /**
-     * Two-Parameter Constructor Method, instantiates a Notification with a Note on a Date
-     *
-     * @param note Notes about notification
-     * @param date Notification date
-     */
-    public Notification(String note, Date date) {
-        this.note = note;
-        this.date = date;
-    }
-
-    @Override
-    public String getMessage() {
-        return note;
-    }
-
-    @Override
-    public Date getDate() {
-        return date;
-    }
-
 
     /**
      * Compares this object with the specified object for order.  Returns a
@@ -82,7 +68,16 @@ public class Notification implements Message,Comparable<Date>{
      */
     @Override
     public int compareTo(Date o) {
-        return this.date.compareTo(o);
+        return this.dateOfMessage.compareTo(o);
+    }
 
+    @Override
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public Date getDate() {
+        return dateOfMessage;
     }
 }

@@ -4,25 +4,30 @@ import data.Data;
 import data.User;
 
 import java.util.Scanner;
+import java.util.concurrent.ConcurrentSkipListMap;
 
-public class LoginDialog implements Dialog {
+public class
+UserFeedDialog {
 
+	public UserFeedDialog(User user, Data data){
 
-	@Override
-	public void startDialog(Data data) {
 		Scanner scanner = new Scanner(System.in);
 		LoginDialog loginDialog = new LoginDialog();
 		int choice = -1;
 		while (choice != 0) {
-			System.out.println("1- Login ");
 
+			System.out.println("1- show my rooms");
+			System.out.println("2- show my notification");
+			System.out.println("2- show assignment");
+			System.out.println("2- show notification");
 			System.out.println("0- Exit");
 			choice = scanner.nextInt();
 			switch (choice) {
 				case 1:
-					System.out.print("Username: " );
-					if (!loginCall(data,scanner.next()))
-						System.out.println("Invalid Username");
+					new LoginDialog().startDialog(data);
+					break;
+				case 2:
+					new SignUpDialog().startDialog(data);
 
 					break;
 				case 0:
@@ -32,21 +37,13 @@ public class LoginDialog implements Dialog {
 					System.out.println("Invalid input : " + choice);
 
 			}
+
 		}
-	}
 
-	private boolean loginCall(Data data, String username){
-		User user = data.getUserById(username);
-		if (user == null) return  false;
 
-		new UserFeedDialog();
+
+
 
 	}
-
-	@Override
-	public void finishDialog() {
-
-	}
-
 
 }

@@ -1,9 +1,8 @@
 package Dialog;
 
 import data.Data;
-import data.User;
 
-public class RoomDialog implements Dialog {
+public class SignUpDialog implements Dialog{
 	@Override
 	public void startDialog(Data data) {
 

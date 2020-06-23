@@ -3,62 +3,100 @@ package data;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class for representing Data
+ */
 public class Data {
-	Map<String, User> userMap;
-	Map<String, Room> roomMap;
+    /**
+     * The User map.
+     */
+    Map<String, User> userMap;
+    /**
+     * The Room map.
+     */
+    Map<String, Room> roomMap;
 
-	public Data() {
-		userMap = new HashMap<String, User>();
-		roomMap = new HashMap<String, Room>();
-	}
+    /**
+     * No Parameter Constructor Method, instantiates a Data
+     */
+    public Data() {
+        userMap = new HashMap<>();
+        roomMap = new HashMap<>();
+    }
 
-	public boolean addUser(User user) {
-		if (user == null)
-			return false;
-		if (userMap.containsKey(user.getProfile().getUserName()))
-			return false;
-		else {
-			userMap.put(user.getProfile().getUserName(), user);
-			return true;
-		}
-	}
+    /**
+     * Adds user to user map
+     *
+     * @param user The User object
+     * @return True if user added, false otherwise
+     */
+    public boolean addUser(User user) {
+        if (user == null)
+            return false;
+        if (userMap.containsKey(user.getProfile().getUserName()))
+            return false;
+        else {
+            userMap.put(user.getProfile().getUserName(), user);
+            return true;
+        }
+    }
 
-	public boolean addRoom(Room room) {
-		if (roomMap == null)
-			return false;
-		if (roomMap.containsKey(room.getCodeOfRoom()))
-			return false;
-		else {
-			roomMap.put(room.getCodeOfRoom(), room);
-			return true;
-		}
-	}
+    /**
+     * Adds room to room map
+     *
+     * @param room The Room object
+     * @return True if room added, false otherwise
+     */
+    public boolean addRoom(Room room) {
+        if (roomMap == null)
+            return false;
+        if (roomMap.containsKey(room.getCodeOfRoom()))
+            return false;
+        else {
+            roomMap.put(room.getCodeOfRoom(), room);
+            return true;
+        }
+    }
 
-	public Room getRoomById(String key) {
-		if (roomMap.containsKey(key))
-			return roomMap.get(key);
-		else
-			return null;
-	}
+    /**
+     * Gets a Room by the given key
+     *
+     * @param key The Key of the room map
+     * @return The Room object
+     */
+    public Room getRoomById(String key) {
+        return roomMap.getOrDefault(key, null);
+    }
 
-	public User getUserById(String key) {
-		if (userMap.containsKey(key))
-			return userMap.get(key);
-		else
-			return null;
-	}
+    /**
+     * Gets a User by the given key
+     *
+     * @param key The Key of the user map
+     * @return The User object
+     */
+    public User getUserById(String key) {
+        return userMap.getOrDefault(key, null);
+    }
 
-	public User removeUserById(String key) {
-		if (userMap.containsKey(key)) {
-			return userMap.remove(key);
-		} else return null;
-	}
+    /**
+     * Removes a User by the given key
+     *
+     * @param key The Key of the user map
+     * @return The User object
+     */
+    public User removeUserById(String key) {
+        return userMap.remove(key);
+    }
 
-	public Room removeRoomById(String key) {
-		if (roomMap.containsKey(key)) {
-			return roomMap.remove(key);
-		} else return null;
-	}
+    /**
+     * Removes a Room by the given key
+     *
+     * @param key The Key of the room map
+     * @return The Room object
+     */
+    public Room removeRoomById(String key) {
+        return roomMap.remove(key);
+    }
 
 
 }
