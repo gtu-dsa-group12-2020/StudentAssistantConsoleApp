@@ -3,6 +3,7 @@ package data;
 import utils.AVLTree;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Random;
@@ -27,7 +28,7 @@ public class Room implements Comparable<String> {
         admins.add(admin);
     }
 
-    public boolean addAsignment(Date date, Assignment assignment) {
+    public boolean addAssignment(Date date, Assignment assignment) {
         return roomCalendar.addAssignmentToDate(date,assignment) != null;
     }
 
@@ -64,7 +65,7 @@ public class Room implements Comparable<String> {
         int n = 7;
         new Random().nextBytes(array);
 
-        String randomString = new String(array, Charset.forName("UTF-8"));
+        String randomString = new String(array, StandardCharsets.UTF_8);
 
         StringBuilder r = new StringBuilder();
 

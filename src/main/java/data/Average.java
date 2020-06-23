@@ -22,60 +22,61 @@ public class Average implements Comparable<Average>{
         }
     }
 
-    public void setNameLessson(String name ,int index){
+    public void setNameLesson(String name , int index){
         try{
             if(index < 0 || index >= lessons.size() )
                 throw new IndexOutOfBoundsException();
 
-            ListIterator iter = lessons.listIterator(index);
-            Lesson tempLesson = (Lesson) iter.next();
+            ListIterator<Lesson> iter = lessons.listIterator(index);
+            Lesson tempLesson = iter.next();
 
             tempLesson.setName(name);
         }
 
         catch (IndexOutOfBoundsException e){
+            System.err.println("Lesson Stack Index out of Bounds");
         }
     }
 
-    public void setAktsLessson(int akts ,int index){
+    public void setAktsLesson(int AKTS , int index){
         try{
             if(index < 0 || index >= lessons.size() )
                 throw new IndexOutOfBoundsException();
 
-            ListIterator iter = lessons.listIterator(index);
-            Lesson tempLesson = (Lesson) iter.next();
+            ListIterator<Lesson> iter = lessons.listIterator(index);
+            Lesson tempLesson = iter.next();
 
-            tempLesson.setAkts(akts);
+            tempLesson.setAkts(AKTS);
         }
 
         catch (IndexOutOfBoundsException e){
+            System.err.println("Lesson Stack Index out of Bounds");
         }
     }
 
-    public void setGradeLessson(String gradeLetter ,int index){
+    public void setGradeLesson(String gradeLetter , int index){
         try{
             if(index < 0 || index >= lessons.size() )
                 throw new IndexOutOfBoundsException();
 
-            ListIterator iter = lessons.listIterator(index);
-            Lesson tempLesson = (Lesson) iter.next();
+            ListIterator<Lesson> iter = lessons.listIterator(index);
+            Lesson tempLesson = iter.next();
 
             tempLesson.gradeValue(gradeLetter);
         }
 
         catch (IndexOutOfBoundsException e){
+            System.err.println("Lesson Stack Index out of Bounds");
         }
     }
 
     public double calculateAverage(){
         int lessonsTotalAkts = 0;
         double lessonsTotalGrade = 0;
-        Lesson tempLesson = null;
+        Lesson tempLesson;
 
-        ListIterator<Lesson> iter = lessons.listIterator();
-
-        while(iter.hasNext()){
-            tempLesson = iter.next();
+        for (Lesson lesson : lessons) {
+            tempLesson = lesson;
             lessonsTotalAkts += tempLesson.getAkts();
             lessonsTotalGrade += tempLesson.getGrade() * tempLesson.getAkts();
         }
@@ -127,29 +128,22 @@ public class Average implements Comparable<Average>{
      */
     @Override
     public int compareTo(Average o) {
-        if(calculateAverage() == o.calculateAverage())
-            return 0;
-
-        else if( calculateAverage() < o.calculateAverage())
-            return -1;
-
-        else
-            return 1;
+        return Double.compare(calculateAverage(), o.calculateAverage());
     }
 
-    private class Lesson{
+    private static class Lesson{
         private String name;
-        private int akts;
+        private int AKTS;
         private double grade;
 
         private Lesson(){
             name = "";
-            akts = 0;
+            AKTS = 0;
             grade = 0;
         }
 
         public int getAkts(){
-            return akts;
+            return AKTS;
         }
 
         public double getGrade(){
@@ -160,9 +154,9 @@ public class Average implements Comparable<Average>{
             return name;
         }
 
-        public void setAkts(int akts){
-            if(akts > 0) {
-                this.akts = akts;
+        public void setAkts(int AKTS){
+            if(AKTS > 0) {
+                this.AKTS = AKTS;
             }
         }
 
@@ -171,46 +165,32 @@ public class Average implements Comparable<Average>{
         }
 
         public void gradeValue(String gradeLetter1){
-            if(gradeLetter1.equals("AA"))
-                grade = 4;
-
-            else if(gradeLetter1.equals("BA")){
-                grade = 3.5;
+            switch (gradeLetter1) {
+                case "AA":
+                    grade = 4;
+                    break;
+                case "BA":
+                    grade = 3.5;
+                    break;
+                case "BB":
+                    grade = 3;
+                    break;
+                case "CB":
+                    grade = 2.5;
+                    break;
+                case "CC":
+                    grade = 2;
+                    break;
+                case "DC":
+                    grade = 1.5;
+                    break;
+                case "DD":
+                    grade = 1;
+                    break;
+                default:
+                    grade = 0;
+                    break;
             }
-
-            else if(gradeLetter1.equals("BB")){
-                grade = 3;
-            }
-
-            else if(gradeLetter1.equals("CB")){
-                grade = 2.5;
-            }
-
-            else if(gradeLetter1.equals("CC")){
-                grade = 2;
-            }
-
-            else if(gradeLetter1.equals("DC")){
-                grade = 1.5;
-            }
-
-            else if(gradeLetter1.equals("DD")){
-                grade = 1;
-            }
-
-            else if(gradeLetter1.equals("FF")){
-                grade = 0;
-            }
-
-            else
-                grade = 0;
         }
     }
-
-    public static void main(String args[]){
-        Average a = new Average();
-
-        a.addLesson();
-    }
-
 }

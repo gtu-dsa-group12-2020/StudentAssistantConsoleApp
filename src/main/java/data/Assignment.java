@@ -28,7 +28,7 @@ public class Assignment implements Message, Comparable<Date> {
 	public Date getAssigmentDate() {
 		return assigmentDate;
 	}
-
+	public void setAssigmentDate(Date o){ this.assigmentDate=o;}
 	@Override
 	public String toString() {
 		return "Assignment\n" +
