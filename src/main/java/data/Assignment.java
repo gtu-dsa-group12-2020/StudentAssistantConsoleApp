@@ -2,6 +2,9 @@ package data;
 
 import java.util.Date;
 
+/**
+ * Class for representing Assignment of any Room
+ */
 public class Assignment implements Message, Comparable<Date> {
 	private String message;
 
@@ -16,6 +19,11 @@ public class Assignment implements Message, Comparable<Date> {
 		return null;
 	}
 
+	/**
+	 * Sets link of the assignment
+	 *
+	 * @param link Link of the assignment
+	 */
 	public void setLink(String link) {
 		this.link = link;
 	}
@@ -25,10 +33,23 @@ public class Assignment implements Message, Comparable<Date> {
 		return null;
 	}
 
+
+	/**
+	 * Gets assigment date of the assignment
+	 *
+	 * @return The date of the assigment
+	 */
 	public Date getAssigmentDate() {
 		return assigmentDate;
 	}
+
+	/**
+	 * Set date of the assigment to other date
+	 *
+	 * @param o Other date object
+	 */
 	public void setAssigmentDate(Date o){ this.assigmentDate=o;}
+
 	@Override
 	public String toString() {
 		return "Assignment\n" +

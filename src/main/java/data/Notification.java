@@ -3,6 +3,9 @@ package data;
 import java.util.Date;
 
 
+/**
+ * Class for representing Notification of any Room
+ */
 public class Notification implements Message,Comparable<Date>{
     private final String note;
 
@@ -16,6 +19,12 @@ public class Notification implements Message,Comparable<Date>{
                 '\n';
     }
 
+    /**
+     * Two-Parameter Constructor Method, instantiates a Notification with a Note on a Date
+     *
+     * @param note Notes about notification
+     * @param date Notification date
+     */
     public Notification(String note, Date date) {
         this.note = note;
         this.date = date;
