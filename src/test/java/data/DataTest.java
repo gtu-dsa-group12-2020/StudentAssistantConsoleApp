@@ -7,42 +7,40 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataTest {
 
     User userObject = new User("testUserName","testMail");
-    User userObject2 = new User("testUserName2","testMail2");
+    Room roomObject = new Room("testNameOfRoom",userObject);
     Data dataObject = new Data();
 
     @Test
     void addUser() {
-        /* would be edited */
-        assertTrue(true);
+        assertTrue(dataObject.addUser(userObject));
     }
 
     @Test
     void addRoom() {
-        /* would be edited */
-        assertTrue(true);
+        assertTrue(dataObject.addRoom(roomObject));
     }
 
     @Test
     void getRoomById() {
         /* would be edited */
-        assertTrue(true);
+        assertNull(dataObject.getRoomById("testUserName"));
     }
 
     @Test
     void getUserById() {
         /* would be edited */
-        assertTrue(true);
+        assertNull(dataObject.getUserById("testNameOfRoom"));
     }
 
     @Test
     void removeUserById() {
         /* would be edited */
-        assertTrue(true);
+        assertNull(dataObject.removeUserById("testNameOfRoom"));
     }
 
     @Test
     void removeRoomById() {
         /* would be edited */
-        assertTrue(true);
+        assertNull(dataObject.removeRoomById("testUserName"));
     }
 }
