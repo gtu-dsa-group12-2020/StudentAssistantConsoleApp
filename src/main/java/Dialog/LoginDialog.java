@@ -39,8 +39,10 @@ public class LoginDialog implements Dialog {
 		User user = data.getUserById(username);
 		if (user == null) return  false;
 
-		new UserFeedDialog();
+		new UserFeedDialog().startDialog(user,data);
 
+
+		return true;
 	}
 
 	@Override

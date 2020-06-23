@@ -1,5 +1,6 @@
 package data;
 
+import utils.AVL;
 import utils.AVLTree;
 
 import java.nio.charset.StandardCharsets;
@@ -26,7 +27,7 @@ public class Room implements Comparable<String> {
     /**
      * AVLTree for storing Users
      */
-    private final AVLTree<User> userAVLTree;
+    private final AVL<User> userAVLTree;
     /**
      * Room's Calendar
      */
@@ -46,7 +47,7 @@ public class Room implements Comparable<String> {
     Room(String nameOfRoom, User admin) {
         this.nameOfRoom = nameOfRoom;
         this.admins = new HashSet<>();
-        this.userAVLTree = new AVLTree<>();
+        this.userAVLTree = new AVL<>();
         this.codeOfRoom = generateRoomCode();
         this.roomCalendar = new Calendar();
         this.chat = new ConcurrentSkipListSet<>();
@@ -135,7 +136,7 @@ public class Room implements Comparable<String> {
      *
      * @return the user avl tree
      */
-    public AVLTree<User> getUserAVLTree() {
+    public AVL<User> getUserAVLTree() {
         return userAVLTree;
     }
 
