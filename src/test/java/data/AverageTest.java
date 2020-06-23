@@ -48,8 +48,8 @@ public class AverageTest{
         average.setAktsLessson(9,2);
         average.setGradeLessson("BA",2);
 
-        assertTrue(average.compareTo(temp) == 0);
-        assertTrue(average.compareTo(temp) < 0);
+        assertFalse(average.compareTo(temp) == 0);
+        assertFalse(average.compareTo(temp) < 0);
         assertTrue(average.compareTo(temp) > 0);
     }
 }
