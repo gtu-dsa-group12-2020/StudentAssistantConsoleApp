@@ -7,8 +7,14 @@ import java.util.Date;
  * Class for representing Notification of any Room
  */
 public class Notification implements Message,Comparable<Date>{
+    /**
+     *  note is using string
+     */
     private final String note;
 
+    /**
+     * Date class create
+     */
     private final Date date;
 
     @Override

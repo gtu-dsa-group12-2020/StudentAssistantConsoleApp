@@ -4,17 +4,42 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 public class Average implements Comparable<Average>{
+    /**
+     * Program create lessons and use stack
+     */
     private Stack<Lesson> lessons = new Stack<>();
+
+    /**
+     * first average is last average for the student
+     */
     private double firstAverage = 0;
+
+    /**
+     * first akts is last taked lessons akts
+     */
     private int firstAkts = 0;
 
+
+    /**
+     * create a new lesson
+     */
     public void addLesson() {
         lessons.push(new Lesson());
     }
+
+    /**
+     * if student wanna delete a lesson need this function
+     * @return
+     */
     public Lesson removeLesson(){
         return lessons.pop();
     }
 
+    /**
+     *
+     * @param firstAverage
+     * @param firstAkts
+     */
     public void assignFirstAverageAndAkts(double firstAverage, int firstAkts){
         if(firstAkts > 0 && firstAverage > 0) {
             this.firstAkts = firstAkts;
@@ -22,6 +47,11 @@ public class Average implements Comparable<Average>{
         }
     }
 
+    /**
+     * take name information
+     * @param name is lesson's name
+     * @param index is index in stack
+     */
     public void setNameLesson(String name , int index){
         try{
             if(index < 0 || index >= lessons.size() )
@@ -38,6 +68,11 @@ public class Average implements Comparable<Average>{
         }
     }
 
+    /**
+     *  take akts information
+     * @param AKTS is credit of lesson
+     * @param index is wwhere is in stack
+     */
     public void setAktsLesson(int AKTS , int index){
         try{
             if(index < 0 || index >= lessons.size() )
@@ -54,6 +89,11 @@ public class Average implements Comparable<Average>{
         }
     }
 
+    /**
+     * take information
+     * @param gradeLetter new grade
+     * @param index is where upload
+     */
     public void setGradeLesson(String gradeLetter , int index){
         try{
             if(index < 0 || index >= lessons.size() )
@@ -70,6 +110,10 @@ public class Average implements Comparable<Average>{
         }
     }
 
+    /**
+     * this class uplade all information and calculete this in function
+     * @return the answer
+     */
     public double calculateAverage(){
         int lessonsTotalAkts = 0;
         double lessonsTotalGrade = 0;
@@ -131,39 +175,70 @@ public class Average implements Comparable<Average>{
         return Double.compare(calculateAverage(), o.calculateAverage());
     }
 
+    /**
+     * there we need the lesson and use
+     */
     private static class Lesson{
+        /**
+         * name is lesson name
+         */
         private String name;
-        private int AKTS;
+        /**
+         * akts is lesson akts
+         */
+        private int akts;
+        /**
+         * grade is user choice grade for lesson
+         */
         private double grade;
 
+        /**
+         * no parameter constructure for new lesson
+         */
         private Lesson(){
             name = "";
-            AKTS = 0;
+            akts = 0;
             grade = 0;
         }
 
-        public int getAkts(){
-            return AKTS;
-        }
-
+        /**
+         * call grade value
+         * @return grade information
+         */
         public double getGrade(){
             return grade;
         }
 
+        /**
+         * call name of lesson
+         * @return name information
+         */
         public String getName(){
             return name;
         }
 
+        /**
+         * akts assignment
+         * @param akts lesson information
+         */
         public void setAkts(int AKTS){
             if(AKTS > 0) {
                 this.AKTS = AKTS;
             }
         }
 
+        /**
+         * name assignment
+         * @param name is new lesson name
+         */
         public void setName(String name) {
             this.name = name;
         }
 
+        /**
+         * take string and convert to double for grade
+         * @param gradeLetter1 is string grade
+         */
         public void gradeValue(String gradeLetter1){
             switch (gradeLetter1) {
                 case "AA":
