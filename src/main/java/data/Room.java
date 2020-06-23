@@ -111,6 +111,13 @@ public class Room implements Comparable<String> {
         return admins.remove(target);
     }
 
+    public void updateAllUsers() {
+        for (User user : userAVLTree.preorder()) {
+            user.updateCalendar(this.getRoomCalendar());
+        }
+    }
+
+
 
     /**
      * Gets code of room.
