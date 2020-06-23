@@ -13,8 +13,6 @@ X
 (src/main/java/Dialog/CalendarDialog.java,0/0/00d47558f14f9d9bd0337a34536eb9246b9dac54
 \
 ,src/main/java/Dialog/NotificationDialog.java,1/c/1c0d8b37c06ed9f33598a43b4c729ada691ed55b
-P
- src/main/java/utils/AVLTree.java,8/4/847e2122242eee6d7c91a1e542417038141df72f
 Y
 )src/main/java/utils/BinarySearchTree.java,0/2/02e85fc3a4b5e728584d6ebc7620bc0c5a96f66c
 S
@@ -35,12 +33,6 @@ R
 "src/main/java/data/Assignment.java,d/e/de11579c71cda73a692e5c7d0402109409a01824
 L
 src/main/java/data/User.java,4/6/46b7a610eb7d8a35b6d46b92ab679fb7cceb946d
-Y
-)src/main/java/seydaMenu/group12/Main.java,0/9/0952235875760b0364d6a4e1305ac2053a036325
-\
-,src/main/java/seydaMenu/group12/DemoApp.java,a/2/a2bf2950d4407245b1fc2c34a27fc43f1982ee3d
-`
-0src/main/java/seydaMenu/group12/MenuDemoApp.java,1/a/1a833254e5e1f2d0365a371778bb7cc4f058e5d3
 Z
 *src/main/java/Dialog/DialogController.java,8/0/80e1d807319e59458fd019b1c45999cd34cf1ace
 P
@@ -53,3 +45,19 @@ U
 %src/main/java/Dialog/LoginDialog.java,c/f/cfbf1d5d7105d96521a28d313495cbdd0a1898ce
 P
  src/test/java/data/RoomTest.java,2/6/268945ff6df4fba1e4bd6dc9d7ccc9afa6b49fa6
+G
+src/main/java/Main.java,e/4/e44a8606ce010ad9b89aafdfcee2ab49afbf6d10
+V
+&src/test/java/data/AssignmentTest.java,b/3/b39b3abde2f8f9483d89893fa744c8cc5c1b8f0a
+L
+src/main/java/utils/AVL.java,4/9/491b792ba96a8300714c54b828f7b768940dd487
+U
+%src/main/java/utils/AVLInterface.java,2/7/27095f7c1b8fcb10a6e2d511423752fa590cd986
+P
+ src/main/java/utils/AVLNode.java,d/c/dc30870649930cedaf96182120af0bb583cd114e
+V
+&src/main/java/Dialog/SignUpDialog.java,a/c/ac15f48ca8d786ac48c0ebfde3c91a0e7979fb30
+X
+(src/main/java/Dialog/UserFeedDialog.java,e/4/e4a1fe2b257e3dc10b053ebbdeae62bd096845da
+W
+'src/main/java/Dialog/AverageDialog.java,7/2/7242a19380355a58b188e34350e140603fc923f8
