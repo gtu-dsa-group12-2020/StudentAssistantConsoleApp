@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The type Data.
+ * Class for representing Data
  */
 public class Data {
     /**
@@ -17,7 +17,7 @@ public class Data {
     Map<String, Room> roomMap;
 
     /**
-     * Instantiates a new Data.
+     * No Parameter Constructor Method, instantiates a Data
      */
     public Data() {
         userMap = new HashMap<>();
@@ -25,10 +25,10 @@ public class Data {
     }
 
     /**
-     * Add user boolean.
+     * Adds user to user map
      *
-     * @param user the user
-     * @return the boolean
+     * @param user The User object
+     * @return True if user added, false otherwise
      */
     public boolean addUser(User user) {
         if (user == null)
@@ -42,10 +42,10 @@ public class Data {
     }
 
     /**
-     * Add room boolean.
+     * Adds room to room map
      *
-     * @param room the room
-     * @return the boolean
+     * @param room The Room object
+     * @return True if room added, false otherwise
      */
     public boolean addRoom(Room room) {
         if (roomMap == null)
@@ -59,40 +59,40 @@ public class Data {
     }
 
     /**
-     * Gets room by id.
+     * Gets a Room by the given key
      *
-     * @param key the key
-     * @return the room by id
+     * @param key The Key of the room map
+     * @return The Room object
      */
     public Room getRoomById(String key) {
         return roomMap.getOrDefault(key, null);
     }
 
     /**
-     * Gets user by id.
+     * Gets a User by the given key
      *
-     * @param key the key
-     * @return the user by id
+     * @param key The Key of the user map
+     * @return The User object
      */
     public User getUserById(String key) {
         return userMap.getOrDefault(key, null);
     }
 
     /**
-     * Remove user by id user.
+     * Removes a User by the given key
      *
-     * @param key the key
-     * @return the user
+     * @param key The Key of the user map
+     * @return The User object
      */
     public User removeUserById(String key) {
         return userMap.remove(key);
     }
 
     /**
-     * Remove room by id room.
+     * Removes a Room by the given key
      *
-     * @param key the key
-     * @return the room
+     * @param key The Key of the room map
+     * @return The Room object
      */
     public Room removeRoomById(String key) {
         return roomMap.remove(key);
