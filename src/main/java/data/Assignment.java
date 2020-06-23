@@ -33,6 +33,7 @@ public class Assignment implements Message, Comparable<Date> {
 		return null;
 	}
 
+
 	/**
 	 * Gets assigment date of the assignment
 	 *
@@ -48,6 +49,7 @@ public class Assignment implements Message, Comparable<Date> {
 	 * @param o Other date object
 	 */
 	public void setAssigmentDate(Date o){ this.assigmentDate=o;}
+
 	@Override
 	public String toString() {
 		return "Assignment\n" +

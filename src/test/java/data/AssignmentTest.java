@@ -11,12 +11,12 @@ class AssignmentTest {
     Assignment assignment= new Assignment();
 
     AssignmentTest(){
-        assignment.setAssigmentDate(temp);
+        assignment.setAssignmentDate(temp);
     }
 
     @Test
     void getAssignmentDate(){
-        assertNotNull(assignment.getAssigmentDate());
+        assertNotNull(assignment.getAssignmentDate());
     }
 
     @Test
@@ -26,13 +26,13 @@ class AssignmentTest {
         assertFalse(assignment.compareTo(temp2)<0 || assignment.compareTo(temp2)>0);
         temp = new Date(2008,11,05);
         assignment= new Assignment();
-        assignment.setAssigmentDate(temp);
+        assignment.setAssignmentDate(temp);
         temp2 = new Date(1998,11,05);
         assertTrue(temp.compareTo(temp2)>0);
         assertFalse(assignment.compareTo(temp2)==0 || assignment.compareTo(temp2)<0);
         temp = new Date(2005,11,05);
         assignment= new Assignment();
-        assignment.setAssigmentDate(temp);
+        assignment.setAssignmentDate(temp);
         temp2 = new Date(2008,11,05);
         assertTrue(temp.compareTo(temp2)<0);
         assertFalse(assignment.compareTo(temp2)==0 || assignment.compareTo(temp2)>0);
