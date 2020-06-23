@@ -2,14 +2,19 @@ package data;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalendarTest {
 
+    Date date = new Date();
+    Assignment assignment = new Assignment();
+    Calendar calendarObject = new Calendar();
+
     @Test
     void addAssignmentToDate() {
-        /* would be edited */
-        assertTrue(true);
+        assertNull(calendarObject.addAssignmentToDate(date,assignment));
     }
 
     @Test
