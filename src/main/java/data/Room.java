@@ -2,12 +2,10 @@ package data;
 
 import utils.AVLTree;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 public class Room implements Comparable<String> {
     /**
@@ -18,6 +16,7 @@ public class Room implements Comparable<String> {
     private final Set<User> admins;
     private final AVLTree<User> userAVLTree;
     private final Calendar roomCalendar;
+    private final ConcurrentSkipListSet<UserMessage> chat;
 
     Room(String nameOfRoom, User admin) {
         this.nameOfRoom = nameOfRoom;
@@ -25,11 +24,24 @@ public class Room implements Comparable<String> {
         this.userAVLTree = new AVLTree<>();
         this.codeOfRoom = generateRoomCode();
         this.roomCalendar = new Calendar();
+        this.chat = new ConcurrentSkipListSet<>();
         admins.add(admin);
     }
 
+    public boolean addChatMessage(UserMessage message) {
+        return chat.add(message);
+    }
+
+    public String returnChat() {
+        StringBuilder sb = new StringBuilder();
+        for (UserMessage message: chat) {
+            sb.append(message.toString()).append("\n");
+        }
+        return sb.toString();
+    }
+
     public boolean addAssignment(Date date, Assignment assignment) {
-        return roomCalendar.addAssignmentToDate(date,assignment) != null;
+        return roomCalendar.addAssignmentToDate(date, assignment) != null;
     }
 
     public Calendar getRoomCalendar() {

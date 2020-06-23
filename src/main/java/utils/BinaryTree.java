@@ -28,7 +28,7 @@ public class BinaryTree<E> implements Serializable {
      * @param rightTree The right subtree
      */
     public BinaryTree(E data, BinaryTree<E> leftTree, BinaryTree<E> rightTree) {
-        root = new Node<E>(data);
+        root = new Node<>(data);
         if (leftTree != null) {
             root.left = leftTree.root;
         } else {
@@ -50,9 +50,9 @@ public class BinaryTree<E> implements Serializable {
      */
     public BinaryTree<E> getLeftSubtree() {
         if (root != null && root.left != null) {
-            return new BinaryTree<E>(root.left);
+            return new BinaryTree<>(root.left);
         } else {
-            return new BinaryTree<E>(null);
+            return new BinaryTree<>(null);
         }
     }
 
@@ -63,9 +63,9 @@ public class BinaryTree<E> implements Serializable {
      */
     public BinaryTree<E> getRightSubtree() {
         if (root != null && root.right != null) {
-            return new BinaryTree<E>(root.right);
+            return new BinaryTree<>(root.right);
         } else {
-            return new BinaryTree<E>(null);
+            return new BinaryTree<>(null);
         }
     }
 
@@ -115,7 +115,7 @@ public class BinaryTree<E> implements Serializable {
      * Perform a preorder traversal, returning the tree as one line
      *
      * @param node The local root
-     * @param sb   The string bufer to save the output
+     * @param sb   The string buffer to save the output
      */
     private void preOrderTraverseOneLine(Node<E> node, StringBuilder sb) {
         if (node != null) {
@@ -136,7 +136,7 @@ public class BinaryTree<E> implements Serializable {
      * Perform a postOrder traversal, returning the tree as one line
      *
      * @param node The local root
-     * @param sb   The string bufer to save the output
+     * @param sb   The string buffer to save the output
      */
     private void postOrderTraverse(Node<E> node, StringBuilder sb) {
         if (node != null) {
@@ -157,7 +157,7 @@ public class BinaryTree<E> implements Serializable {
      * Perform an inorder traversal, returning the tree as one line (with parentheses)
      *
      * @param node The local root
-     * @param sb   The string bufer to save the output
+     * @param sb   The string buffer to save the output
      */
     private void inOrderTraverse(Node<E> node, StringBuilder sb) {
         if (node != null) {
@@ -172,7 +172,7 @@ public class BinaryTree<E> implements Serializable {
     }
 
     /**
-     * Method to read a binary treee
+     * Method to read a binary tree
      * pre: The input consists of a preorder traversal of the binary tree.
      * The line "null" indicates a null tree.
      *
@@ -187,7 +187,7 @@ public class BinaryTree<E> implements Serializable {
         } else {
             BinaryTree<String> leftTree = readBinaryTree(scan);
             BinaryTree<String> rightTree = readBinaryTree(scan);
-            return new BinaryTree<String>(data, leftTree, rightTree);
+            return new BinaryTree<>(data, leftTree, rightTree);
         }
     }
 
