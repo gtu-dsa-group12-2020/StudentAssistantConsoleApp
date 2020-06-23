@@ -7,17 +7,42 @@ import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+/**
+ * The type Room.
+ */
 public class Room implements Comparable<String> {
     /**
      * Name of Room
      */
     private final String nameOfRoom;
+    /**
+     * Invite Code of room
+     */
     private final String codeOfRoom;
+    /**
+     * Set for storing Admins
+     */
     private final Set<User> admins;
+    /**
+     * AVLTree for storing Users
+     */
     private final AVLTree<User> userAVLTree;
+    /**
+     * Room's Calendar
+     */
     private final Calendar roomCalendar;
+    /**
+     * Chat SkipList
+     */
     private final ConcurrentSkipListSet<UserMessage> chat;
 
+    private final LinkedList<Message> assignmentList;
+
+    /**
+     * Constructor
+     * @param nameOfRoom Name of Room
+     * @param admin Creator of Room
+     */
     Room(String nameOfRoom, User admin) {
         this.nameOfRoom = nameOfRoom;
         this.admins = new HashSet<>();
@@ -25,53 +50,109 @@ public class Room implements Comparable<String> {
         this.codeOfRoom = generateRoomCode();
         this.roomCalendar = new Calendar();
         this.chat = new ConcurrentSkipListSet<>();
+        this.assignmentList = new LinkedList<>();
         admins.add(admin);
     }
 
+    /**
+     * Adds message to Chat
+     * @param message Given user message
+     * @return true if adding was successful
+     */
     public boolean addChatMessage(UserMessage message) {
         return chat.add(message);
     }
 
+    /**
+     * Return all Chat
+     * @return Chat
+     */
     public String returnChat() {
         StringBuilder sb = new StringBuilder();
-        for (UserMessage message: chat) {
+        for (UserMessage message : chat) {
             sb.append(message.toString()).append("\n");
         }
         return sb.toString();
     }
 
+    /**
+     * Add Assignment to the Assignment to the
+     * @param date Date of the assignment
+     * @param assignment Given Assignment object
+     * @return True if adding was successful
+     */
     public boolean addAssignment(Date date, Assignment assignment) {
-        return roomCalendar.addAssignmentToDate(date, assignment) != null;
+        return roomCalendar.addAssignmentToDate(date, assignment) != null && assignmentList.add(assignment);
     }
 
+    /**
+     * Getter method for Calendar
+     * @return Calendar of the Room
+     */
     public Calendar getRoomCalendar() {
         return roomCalendar;
     }
 
+    /**
+     * Add admin to the Admin List
+     * @param newAdmin New Admin
+     * @return True if successful
+     */
     public boolean addAdmin(User newAdmin) {
         return admins.add(newAdmin);
     }
 
+    /**
+     * Remove Admin from Room
+     * @param target Admin to remove
+     * @return True if removing was successful
+     */
     public boolean removeAdmin(User target) {
         return admins.remove(target);
     }
 
+
+    /**
+     * Gets code of room.
+     *
+     * @return the code of room
+     */
     public String getCodeOfRoom() {
         return codeOfRoom;
     }
 
+    /**
+     * Gets name of room.
+     *
+     * @return the name of room
+     */
     public String getNameOfRoom() {
         return nameOfRoom;
     }
 
+    /**
+     * Gets user avl tree.
+     *
+     * @return the user avl tree
+     */
     public AVLTree<User> getUserAVLTree() {
         return userAVLTree;
     }
 
+    /**
+     * Gets admins.
+     *
+     * @return the admins
+     */
     public Set<User> getAdmins() {
         return admins;
     }
 
+    /**
+     * Generate room code and return it.
+     *
+     * @return Generated Code
+     */
     public String generateRoomCode() {
         byte[] array = new byte[256];
         int n = 7;
