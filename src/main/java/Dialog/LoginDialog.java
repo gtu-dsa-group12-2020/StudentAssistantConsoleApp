@@ -34,7 +34,8 @@ public class LoginDialog implements Dialog {
 	}
 
 	private boolean loginCall(Data data, String username){
-		User user = data.getUserById()
+		User user = data.getUserById(username);
+		return user != null;
 	}
 
 	@Override
