@@ -136,7 +136,7 @@ public class Room implements Comparable<String> {
      *
      * @return the user avl tree
      */
-    public AVLTree<User> getUserAVLTree() {
+    public AVL<User> getUserAVLTree() {
         return userAVLTree;
     }
 
