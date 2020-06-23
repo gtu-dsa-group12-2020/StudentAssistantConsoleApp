@@ -6,6 +6,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DataTest {
 
+    User userObject = new User("testUserName","testMail");
+    User userObject2 = new User("testUserName2","testMail2");
+    Data dataObject = new Data();
+
     @Test
     void addUser() {
         /* would be edited */
