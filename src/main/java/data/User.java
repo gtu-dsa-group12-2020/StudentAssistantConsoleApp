@@ -17,6 +17,8 @@ public class User implements Comparable<User> {
      */
     private final PriorityQueue<Room> rooms;
 
+    private final Calendar userCalendar;
+
     /**
      * Constructor method for inserting profile of the user
      *
@@ -25,6 +27,7 @@ public class User implements Comparable<User> {
      */
     User(String userName, String mail) {
         this.profile = new Profile(userName, mail);
+        this.userCalendar = new Calendar();
         this.rooms = new PriorityQueue<>();
     }
 
@@ -45,7 +48,24 @@ public class User implements Comparable<User> {
      * @return True if adding was successful else false
      */
     public boolean addRoom(Room newRoom) {
+        updateCalendar(newRoom.getRoomCalendar());
         return rooms.add(newRoom);
+    }
+
+    /**
+     * Getter method for Calendar
+     * @return Calendar of user
+     */
+    public Calendar getCalendar() {
+        return userCalendar;
+    }
+
+    /**
+     * Update users calendar
+     * @param roomCalendar Calendar of room
+     */
+    public void updateCalendar(Calendar roomCalendar) {
+        userCalendar.getDates().putAll(roomCalendar.getDates());
     }
 
     /**
