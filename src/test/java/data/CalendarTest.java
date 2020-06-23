@@ -14,30 +14,28 @@ class CalendarTest {
 
     @Test
     void addAssignmentToDate() {
+        /* may be edited */
         assertNull(calendarObject.addAssignmentToDate(date,assignment));
     }
 
     @Test
     void mergeCalendars() {
-        /* would be edited */
-        assertTrue(true);
+        /* merges calendars */
     }
 
     @Test
     void removeAssignment() {
-        /* would be edited */
-        assertTrue(true);
+        /* may be edited */
+        assertNull(calendarObject.removeAssignment(date));
     }
 
     @Test
     void getDates() {
-        /* would be edited */
-        assertTrue(true);
+        assertNotNull(calendarObject.getDates());
     }
 
     @Test
     void returnCalendar() {
-        /* would be edited */
-        assertTrue(true);
+        assertNotNull(calendarObject.returnCalendar());
     }
 }
