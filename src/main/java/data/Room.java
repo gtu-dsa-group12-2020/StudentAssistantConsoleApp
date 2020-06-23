@@ -1,7 +1,6 @@
 package data;
 
 import utils.AVL;
-import utils.AVLTree;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -111,6 +110,13 @@ public class Room implements Comparable<String> {
     public boolean removeAdmin(User target) {
         return admins.remove(target);
     }
+
+    public void updateAllUsers() {
+        for (User user : userAVLTree.preorder()) {
+            user.updateCalendar(this.getRoomCalendar());
+        }
+    }
+
 
 
     /**
