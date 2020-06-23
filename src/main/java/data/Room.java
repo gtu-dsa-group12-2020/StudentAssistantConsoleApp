@@ -36,6 +36,9 @@ public class Room implements Comparable<String> {
      */
     private final ConcurrentSkipListSet<UserMessage> chat;
 
+    /**
+     * Assignment List of the Room
+     */
     private final LinkedList<Message> assignmentList;
 
     /**
@@ -111,13 +114,14 @@ public class Room implements Comparable<String> {
         return admins.remove(target);
     }
 
+    /**
+     * Updates all users' calendar at the room
+     */
     public void updateAllUsers() {
         for (User user : userAVLTree.preorder()) {
             user.updateCalendar(this.getRoomCalendar());
         }
     }
-
-
 
     /**
      * Gets code of room.

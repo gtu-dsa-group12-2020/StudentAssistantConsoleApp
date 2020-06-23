@@ -16,7 +16,9 @@ public class User implements Comparable<User> {
      * PriorityQueue Data Structure for storing rooms of the user attended
      */
     private final PriorityQueue<Room> rooms;
-
+    /**
+     * Calendar of User
+     */
     private final Calendar userCalendar;
 
     /**
@@ -101,6 +103,10 @@ public class User implements Comparable<User> {
         return sb.toString();
     }
 
+    /**
+     * Getter method of Profile
+     * @return Profile of User
+     */
     public Profile getProfile() {
         return profile;
     }
