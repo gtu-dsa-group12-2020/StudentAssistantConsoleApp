@@ -67,6 +67,20 @@ public class User implements Comparable<User> {
         return rooms;
     }
 
+    /**
+     * Returns All rooms' information
+     *
+     * @return Rooms' string
+     */
+    public String getRoomString() {
+        StringBuilder sb = new StringBuilder();
+        for (Room room : rooms) {
+            sb.append(room.getNameOfRoom()).append("\nID: ")
+                    .append(room.getCodeOfRoom()).append("\n");
+        }
+        return sb.toString();
+    }
+
     public Profile getProfile() {
         return profile;
     }
