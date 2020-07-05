@@ -5,13 +5,18 @@ import data.Data;
 import java.util.Scanner;
 
 public class MainDialog implements Dialog {
+	Data data;
+
+	public MainDialog(Data data) {
+		this.data = data;
+	}
 
 	@Override
-	public void startDialog(Data data) {
+	public void startDialog() {
 
 
 		Scanner scanner = new Scanner(System.in);
-		LoginDialog loginDialog = new LoginDialog();
+		LoginDialog loginDialog = new LoginDialog(data);
 		int choice = -1;
 		while (choice != 0) {
 
@@ -21,10 +26,10 @@ public class MainDialog implements Dialog {
 			choice = scanner.nextInt();
 			switch (choice) {
 				case 1:
-					new LoginDialog().startDialog(data);
+					new LoginDialog(data).startDialog();
 					break;
 				case 2:
-					new SignUpDialog().startDialog(data);
+					new SignUpDialog(data).startDialog();
 
 					break;
 				case 0:

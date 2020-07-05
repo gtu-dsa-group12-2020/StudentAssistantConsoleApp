@@ -27,7 +27,7 @@ public class User implements Comparable<User> {
      * @param userName Username of the User
      * @param mail     Mail of the User
      */
-    User(String userName, String mail) {
+    public User(String userName, String mail) {
         this.profile = new Profile(userName, mail);
         this.userCalendar = new Calendar();
         this.rooms = new PriorityQueue<>();

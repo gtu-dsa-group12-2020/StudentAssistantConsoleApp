@@ -6,12 +6,15 @@ import data.User;
 import java.util.Scanner;
 
 public class LoginDialog implements Dialog {
+	Data data;
 
+	public LoginDialog(Data data) {
+		this.data = data;
+	}
 
 	@Override
-	public void startDialog(Data data) {
+	public void startDialog() {
 		Scanner scanner = new Scanner(System.in);
-		LoginDialog loginDialog = new LoginDialog();
 		int choice = -1;
 		while (choice != 0) {
 			System.out.println("1- Login ");
@@ -38,10 +41,7 @@ public class LoginDialog implements Dialog {
 	private boolean loginCall(Data data, String username){
 		User user = data.getUserById(username);
 		if (user == null) return  false;
-
-		new UserFeedDialog().startDialog(user,data);
-
-
+		new UserFeedDialog(user,data).startDialog();
 		return true;
 	}
 

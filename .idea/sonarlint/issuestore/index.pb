@@ -61,3 +61,9 @@ X
 (src/main/java/Dialog/UserFeedDialog.java,e/4/e4a1fe2b257e3dc10b053ebbdeae62bd096845da
 W
 'src/main/java/Dialog/AverageDialog.java,7/2/7242a19380355a58b188e34350e140603fc923f8
+S
+#src/test/java/data/AverageTest.java,9/3/93e555a78db416a17580a36fc282f834f178d0c9
+X
+(src/test/java/data/NotificationTest.java,e/6/e6d712ba5dc9dfbaae182ecd10fdb166990bb0ea
+P
+ src/test/java/data/UserTest.java,2/d/2da4598ad93fca213667356282a7de4e8e500d18

@@ -8,13 +8,18 @@ import java.util.Scanner;
 
 public class
 UserFeedDialog {
+	User user;
+	Data data;
 
+	public UserFeedDialog(User user, Data data) {
+		this.user = user;
 
+	}
 
-	public void startDialog(User user, Data data) {
+	public void startDialog() {
 
 		Scanner scanner = new Scanner(System.in);
-		LoginDialog loginDialog = new LoginDialog();
+		LoginDialog loginDialog = new LoginDialog(data);
 		int choice = -1;
 		while (choice != 0) {
 
