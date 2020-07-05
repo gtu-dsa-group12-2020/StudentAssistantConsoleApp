@@ -37,7 +37,7 @@ public class MainDialog implements Dialog {
 					break;
 				default:
 					System.out.println("Invalid input : " + choice);
-
+					break;
 			}
 
 		}

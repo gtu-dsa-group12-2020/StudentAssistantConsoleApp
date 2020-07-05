@@ -1,15 +1,17 @@
 package Dialog;
 
 import data.Data;
+import data.Room;
 import data.User;
 
 public class RoomDialog implements Dialog {
 	Data data;
 	User user;
-
-	public RoomDialog(Data data, User user) {
-		this.data = data;
+	Room room;
+	public RoomDialog(Data data,User user,Room room) {
+		this.room = room;
 		this.user = user;
+		this.data = data;
 	}
 
 	@Override

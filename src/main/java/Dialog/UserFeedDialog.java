@@ -1,6 +1,7 @@
 package Dialog;
 
 import data.Data;
+import data.Room;
 import data.User;
 
 import java.util.Scanner;
@@ -17,7 +18,7 @@ UserFeedDialog {
 	}
 
 	public void startDialog() {
-
+		//TODO : avarage dialog bağlantısını yap
 		Scanner scanner = new Scanner(System.in);
 		LoginDialog loginDialog = new LoginDialog(data);
 		int choice = -1;
@@ -41,11 +42,18 @@ UserFeedDialog {
 
 					break;
 				case 3:
-					new CalendarDialog().startDialog(user,data);
-
+					new CalendarDialog().startDialog(user, data);
+					break;
 				case 4:
 					new AverageDialog().startDialog();
 					break;
+				case 5:
+					if (createRoom()) {
+						System.out.println("Successful!");
+					}
+					else System.out.println("Unsuccessful!");
+					break;
+				case 6:
 				case 0:
 					System.out.println("Going Back!");
 					break;
@@ -59,9 +67,18 @@ UserFeedDialog {
 	}
 
 
-	private boolean createRoom(User user, Data data) {
-		System.out.println("please enter the room");
-		return false;
+	private boolean createRoom() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("please enter the room name:");
+		String roomName = scanner.next();
+		return data.addRoom(new Room(roomName, user));
+	}
+	private boolean joinRoom(){
+		//TODO : methodun idye göre doğru şekilde ekleme yaptığından emin ol
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Please enter id of room:");
+		String  id = scanner.next();
+		data.getRoomById(id).addUser(user);
 	}
 
 }

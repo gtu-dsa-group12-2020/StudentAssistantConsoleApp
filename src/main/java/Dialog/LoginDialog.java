@@ -33,7 +33,7 @@ public class LoginDialog implements Dialog {
 					break;
 				default:
 					System.out.println("Invalid input : " + choice);
-
+					break;
 			}
 		}
 	}
