@@ -19,6 +19,7 @@ UserFeedDialog {
 
 	public void startDialog() {
 		//TODO : avarage dialog bağlantısını yap
+		//TODO : room listelemenin arıdndan seçilen rooma gitme seçeneği sun!
 		Scanner scanner = new Scanner(System.in);
 		LoginDialog loginDialog = new LoginDialog(data);
 		int choice = -1;
